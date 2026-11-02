@@ -7,57 +7,43 @@
 <meta name="description" content="İHA ve savunma teknolojilerinde dünyadan günlük özet: rakipler, yeni teknolojiler, ihracat fırsatları, tedarik zinciri, enerji ve yapay zekâ.">
 <meta property="og:title" content="Kritik Teknoloji Bülteni">
 <meta property="og:description" content="İHA ve savunma teknolojilerinde dünyadan günlük özet.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
 <style>
-:root{
-  --bg:#f4f6f5; --card:#ffffff; --ink:#17211e; --muted:#5d6b67; --line:#dde3e1;
-  --accent:#1f5f4a; --accent-soft:#e3efea; --warn:#a4441c; --warn-soft:#f8e8df;
-  --display:"Archivo",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif;
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){:root{
-  --bg:#0f1513; --card:#171f1c; --ink:#e4ece9; --muted:#9aa8a3; --line:#2a3531;
-  --accent:#6cc3a2; --accent-soft:#1c2c26; --warn:#f0956a; --warn-soft:#2f1e16; color-scheme:dark}}
+:root{--bg:#ffffff;--ink:#1a1a1a;--muted:#6b6b6b;--line:#e6e6e6;--accent:#1f5f4a;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--ink:#ececec;--muted:#9a9a9a;--line:#2a2a2a;--accent:#7cc7a9;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 56px}
-.wrap{max-width:740px;margin:0 auto;display:grid;gap:28px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+.wrap{max-width:680px;margin:0 auto;display:grid;gap:36px}
 a{color:var(--accent);text-underline-offset:2px}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.kicker{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-header{display:grid;gap:6px}
-.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-h1{font-family:var(--display);font-stretch:80%;font-weight:800;font-size:clamp(32px,7vw,46px);line-height:1.05;margin:0}
+.kicker{font-size:14px;color:var(--muted);text-decoration:none}
+header{display:grid;gap:4px}
+.top{display:flex;justify-content:space-between;gap:10px}
+h1{font-size:30px;line-height:1.2;font-weight:700;margin:0}
 .sub{margin:0;color:var(--muted);font-size:16px}
-h2{font-family:var(--display);font-weight:700;font-size:20px;margin:0}
-.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px}
-.brief ol{margin:0;padding-left:22px;display:grid;gap:9px}
-.brief li::marker{color:var(--accent);font-family:var(--display);font-weight:700}
-.todo{background:var(--accent-soft);border-radius:8px;padding:12px 16px;font-size:16px}
-.todo b{font-family:var(--display)}
-.todo ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
-.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.date{background:var(--warn-soft);border-radius:8px;padding:12px;display:grid;gap:2px}
-.date b{font-family:var(--display);font-stretch:80%;font-weight:800;font-size:24px;color:var(--warn);font-variant-numeric:tabular-nums}
-.date span{font-size:14.5px;line-height:1.4}
-.filters{display:flex;gap:8px;overflow-x:auto;padding:8px 0 6px;position:sticky;top:0;background:var(--bg);z-index:2}
-.filters button{font-family:var(--display);font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:7px 14px;cursor:pointer;white-space:nowrap}
-.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-#list{display:grid;gap:12px}
-.cat-title{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:16px 0 0}
-.cat-desc{margin:-6px 0 0;color:var(--muted);font-size:15px}
-.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:7px}
-.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--display);font-size:12.5px;color:var(--muted)}
-.pill{background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:1px 7px;font-weight:600}
-.pill.tr{background:var(--warn-soft);color:var(--warn)}
-.item h3{font-family:var(--display);font-weight:650;font-size:18px;line-height:1.3;margin:0}
+h2{font-size:19px;font-weight:700;margin:0 0 10px}
+.brief ol,.brief ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.todo{margin-top:18px}
+.todo b{display:block;margin-bottom:6px}
+.dates{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dates b{display:inline-block;min-width:80px;font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:18px;overflow-x:auto;position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);z-index:2}
+.filters button{font:inherit;font-size:15px;border:0;background:none;color:var(--muted);padding:2px 0;cursor:pointer;white-space:nowrap}
+.filters button[aria-pressed="true"]{color:var(--ink);font-weight:600;box-shadow:0 2px 0 var(--ink)}
+#list{display:grid}
+.cat-title{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:28px 0 0}
+.cat-desc{display:none}
+.item{padding:18px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.meta{font-size:13px;color:var(--muted);display:flex;gap:8px}
+.pill{font-weight:600}
+.pill:not(.tr){display:none}
+.item h3{font-size:18px;line-height:1.35;margin:0;font-weight:600}
 .item p{margin:0}
 details{font-size:15.5px}
-summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:14px;color:var(--accent)}
+summary{cursor:pointer;color:var(--accent);font-size:14px}
 details ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
-.src{font-family:var(--display);font-size:13px;color:var(--muted)}
-footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:14px;display:grid;gap:6px}
+.src{font-size:13.5px;color:var(--muted)}
+footer{color:var(--muted);font-size:14px;display:grid;gap:4px}
 </style>
 </head>
 <body>
@@ -68,7 +54,7 @@ footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);paddin
     <p class="sub">İHA ve savunma teknolojilerinde dünyadan günlük özet: rakipler, yeni teknolojiler, ihracat fırsatları, tedarik zinciri, enerji ve yapay zekâ.</p>
   </header>
 
-  <section class="box brief" aria-labelledby="brief-h">
+  <section class="brief" aria-labelledby="brief-h">
     <h2 id="brief-h">Yönetici özeti</h2>
     <ol>
       <li><b>Tedarik zincirinde en büyük risk 18 Kasım.</b> Çin, 48V ve 3 kW üstü motorları, ESC'leri, 16 kW üstü İHA motorlarını, 400 N üstü turbojetleri, büyük karbon pervaneleri ve 300 km üstü menzilli İHA'ların otopilot ve haberleşme ekipmanını lisansa bağlıyor. Aynı ay nadir toprak (10 Kasım) ve galyum-germanyum (27 Kasım) askıları da bitiyor.</li>
@@ -86,17 +72,17 @@ footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);paddin
     </div>
   </section>
 
-  <section aria-labelledby="dates-h" style="display:grid;gap:12px">
+  <section aria-labelledby="dates-h" >
     <h2 id="dates-h">Yaklaşan tarihler</h2>
-    <div class="dates">
-      <div class="date"><b>3–6 Kas</b><span>Euronaval 2026, Paris: insansız deniz araçları öne çıkıyor</span></div>
-      <div class="date"><b>10 Kas</b><span>Çin nadir toprak kontrollerindeki askı bitiyor</span></div>
-      <div class="date"><b>18 Kas</b><span>Çin İHA bileşen ihracat lisansı başlıyor · Indo Defence, Cakarta</span></div>
-      <div class="date"><b>27 Kas</b><span>Galyum, germanyum, antimon askısı bitiyor</span></div>
-    </div>
+    <ul class="dates">
+      <li><b>3–6 Kas</b>Euronaval 2026, Paris: insansız deniz araçları öne çıkıyor</li>
+      <li><b>10 Kas</b>Çin nadir toprak kontrollerindeki askı bitiyor</li>
+      <li><b>18 Kas</b>Çin İHA bileşen ihracat lisansı başlıyor · Indo Defence, Cakarta</li>
+      <li><b>27 Kas</b>Galyum, germanyum, antimon askısı bitiyor</li>
+    </ul>
   </section>
 
-  <section aria-labelledby="news-h" style="display:grid;gap:10px">
+  <section aria-labelledby="news-h" >
     <h2 id="news-h">Haberler</h2>
     <div class="filters" role="group" aria-label="Kategori filtresi" id="filters"></div>
     <div id="list"></div>
