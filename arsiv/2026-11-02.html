@@ -131,7 +131,14 @@ details ul{margin:8px 0 0;padding-left:18px;display:grid;gap:5px}
 .src{font-size:13.5px;color:var(--muted)}
 .src a{color:var(--muted)}
 .src a:hover{color:var(--accent)}
-#kaynakca ol{margin:0;padding-left:28px;columns:2 300px;column-gap:32px;font-size:14px;line-height:1.5}
+.ref-sum{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
+.ref-sum::-webkit-details-marker{display:none}
+.ref-sum h2{margin:0}
+.ref-sum .lede{grid-column:1;margin:0;font-size:14.5px}
+.ref-sum::after{content:"+";grid-column:2;grid-row:1 / span 2;font-size:26px;line-height:1;color:var(--muted);font-weight:300}
+#ref-box[open] .ref-sum::after{content:"−"}
+#ref-box[open] .ref-sum{border-bottom:0}
+#kaynakca ol{margin:8px 0 0;padding-left:28px;columns:2 300px;column-gap:32px;font-size:14px;line-height:1.5}
 #kaynakca li{break-inside:avoid;margin:0 0 10px;color:var(--muted)}
 #kaynakca li a{color:var(--ink);font-weight:500}
 #kaynakca li span{display:block;font-size:13px}
@@ -208,10 +215,11 @@ footer{color:var(--muted);font-size:14px;display:grid;gap:4px;border-top:3px sol
     <div id="list"></div>
   </section>
 
-  <section id="kaynakca" aria-labelledby="ref-h">
-    <h2 id="ref-h">Kaynakça</h2>
-    <p class="lede" id="ref-lede"></p>
-    <ol id="refs"></ol>
+  <section id="kaynakca">
+    <details id="ref-box">
+      <summary class="ref-sum"><h2 id="ref-h">Kaynakça</h2><span class="lede" id="ref-lede"></span></summary>
+      <ol id="refs"></ol>
+    </details>
   </section>
 
   <footer>
@@ -672,7 +680,11 @@ footer{color:var(--muted);font-size:14px;display:grid;gap:4px;border-top:3px sol
   data.forEach(function(n){ n.src.forEach(function(s){ addRef(s[0],s[1],n.title); }); });
   viz.charts.forEach(function(c){ (c.src||[]).forEach(function(s){ addRef(s[0],s[1],'Grafik: '+c.title); }); });
   function host(u){ try{ return new URL(u).hostname.replace(/^www\./,''); }catch(e){ return ''; } }
-  document.getElementById('ref-lede').textContent='Bu sayıda kullanılan '+refs.length+' kaynak. Erişim tarihi: '+viz.issueLabel+'.';
+  document.getElementById('ref-lede').textContent='Bu sayıda kullanılan '+refs.length+' kaynak · Erişim: '+viz.issueLabel+' · Açmak için dokunun';
+  var refBox=document.getElementById('ref-box');
+  function openRefs(){ if(location.hash==='#kaynakca') refBox.open=true; }
+  window.addEventListener('hashchange',openRefs); openRefs();
+  document.querySelectorAll('a[href="#kaynakca"]').forEach(function(a){ a.addEventListener('click',function(){ refBox.open=true; }); });
   document.getElementById('refs').innerHTML=refs.map(function(r){
     return '<li><a href="'+esc(r.url)+'" target="_blank" rel="noopener">'+esc(r.name)+'</a> · '+esc(host(r.url))+'<span>'+esc(r.ctx.join(' · '))+'</span></li>';
   }).join('');
