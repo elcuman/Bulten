@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kritik Teknoloji Bülteni</title>
+<meta name="description" content="İHA ve savunma teknolojilerinde dünyadan günlük özet: rakipler, yeni teknolojiler, ihracat fırsatları, tedarik zinciri, enerji ve yapay zekâ.">
+<meta property="og:title" content="Kritik Teknoloji Bülteni">
+<meta property="og:description" content="İHA ve savunma teknolojilerinde dünyadan günlük özet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --bg:#f4f6f5; --card:#ffffff; --ink:#17211e; --muted:#5d6b67; --line:#dde3e1;
+  --accent:#1f5f4a; --accent-soft:#e3efea; --warn:#a4441c; --warn-soft:#f8e8df;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0f1513; --card:#171f1c; --ink:#e4ece9; --muted:#9aa8a3; --line:#2a3531;
+  --accent:#6cc3a2; --accent-soft:#1c2c26; --warn:#f0956a; --warn-soft:#2f1e16; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 56px}
+.wrap{max-width:740px;margin:0 auto;display:grid;gap:28px}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.kicker{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:6px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+h1{font-family:var(--display);font-stretch:80%;font-weight:800;font-size:clamp(32px,7vw,46px);line-height:1.05;margin:0}
+.sub{margin:0;color:var(--muted);font-size:16px}
+h2{font-family:var(--display);font-weight:700;font-size:20px;margin:0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px}
+.brief ol{margin:0;padding-left:22px;display:grid;gap:9px}
+.brief li::marker{color:var(--accent);font-family:var(--display);font-weight:700}
+.todo{background:var(--accent-soft);border-radius:8px;padding:12px 16px;font-size:16px}
+.todo b{font-family:var(--display)}
+.todo ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.date{background:var(--warn-soft);border-radius:8px;padding:12px;display:grid;gap:2px}
+.date b{font-family:var(--display);font-stretch:80%;font-weight:800;font-size:24px;color:var(--warn);font-variant-numeric:tabular-nums}
+.date span{font-size:14.5px;line-height:1.4}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:8px 0 6px;position:sticky;top:0;background:var(--bg);z-index:2}
+.filters button{font-family:var(--display);font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:7px 14px;cursor:pointer;white-space:nowrap}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#list{display:grid;gap:12px}
+.cat-title{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:16px 0 0}
+.cat-desc{margin:-6px 0 0;color:var(--muted);font-size:15px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:7px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--display);font-size:12.5px;color:var(--muted)}
+.pill{background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:1px 7px;font-weight:600}
+.pill.tr{background:var(--warn-soft);color:var(--warn)}
+.item h3{font-family:var(--display);font-weight:650;font-size:18px;line-height:1.3;margin:0}
+.item p{margin:0}
+.why{font-size:15.5px;border-left:3px solid var(--accent);padding-left:10px}
+.why b{font-family:var(--display);font-size:14px}
+details{font-size:15.5px}
+summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:14px;color:var(--accent)}
+details ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+.src{font-family:var(--display);font-size:13px;color:var(--muted)}
+footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:14px;display:grid;gap:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="top"><span class="kicker">2 Kasım 2026 · Sayı 1</span><a class="kicker" href="arsiv/">Arşiv</a></div>
+    <h1>Kritik Teknoloji Bülteni</h1>
+    <p class="sub">İHA ve savunma teknolojilerinde dünyadan günlük özet: rakipler, yeni teknolojiler, ihracat fırsatları, tedarik zinciri, enerji ve yapay zekâ. Büyük bir Türk İHA üreticisinin gözünden yorumlanır.</p>
+  </header>
+
+  <section class="box brief" aria-labelledby="brief-h">
+    <h2 id="brief-h">Yönetici özeti</h2>
+    <ol>
+      <li><b>Tedarik zincirinde en büyük risk 18 Kasım.</b> Çin, 48V ve 3 kW üstü motorları, ESC'leri, 16 kW üstü İHA motorlarını, 400 N üstü turbojetleri, büyük karbon pervaneleri ve 300 km üstü menzilli İHA'ların otopilot ve haberleşme ekipmanını lisansa bağlıyor. Aynı ay nadir toprak (10 Kasım) ve galyum-germanyum (27 Kasım) askıları da bitiyor.</li>
+      <li><b>Sadık kanat (CCA) yarışı hızlandı.</b> ABD en az 500 adet hedefliyor, ilk 100'ü 2029'a kadar. İkinci tura Boeing, Lockheed ve Northrop kendi paralarıyla geliştirdikleri uçaklarla giriyor. Shield AI'ın dikey kalkışlı X-BAT'ı yıl sonunda uçuyor, Helsing 18 milyar dolar değerlemeye ulaştı. KIZILELMA ve ANKA-3'ün rakip seti genişliyor.</li>
+      <li><b>Türk İHA'ları ihracatta güçlü, Avrupa'ya giriş yolu açıldı.</b> AKINCI 16 ülkeye satıldı. Baykar–Leonardo ortaklığı LBA Systems İtalya'da tam faaliyette. ANKA-3 için 1,75 ton faydalı yüklü yeni sürümün üretim hattı Kasım'da açılıyor.</li>
+      <li><b>Yeni ihracat pencereleri var.</b> AB'nin SAFE fonunda 21,3 milyar avroluk tur İHA ve İHA karşıtı sistemleri öncelikli sayıyor (%35 dış kaynak sınırıyla). Hindistan'ın 87 MALE İHA'lık 3,6 milyar dolarlık ihalesi ilerliyor. ABD ucuz İHA üretiminde hâlâ geride.</li>
+      <li><b>Teknoloji eksenleri netleşiyor.</b> GPS'siz navigasyon, sürü otonomisi, hibrit itki (General Atomics'in 60 saat hedefi), fiber optik FPV, lazer ve ramjet önleyicili İHA karşıtı sistemler öne çıkıyor. Yazılım otonomisi lisanslanabilir bir ürüne dönüştü: Shield AI, Hivemind'ı Leonardo'ya lisansladı.</li>
+    </ol>
+    <div class="todo"><b>Bu hafta için öneriler</b>
+      <ul>
+        <li>BOM'daki Çin menşeli motor, ESC, pervane, otopilot ve haberleşme kalemlerini 18 Kasım eşiklerine göre işaretleyin; kritik kalemlerde 2–3 aylık emniyet stoku ve alternatif tedarikçi (Tayvan, Kore, yerli) planlayın.</li>
+        <li>AB pazarı için SAFE'in %65 AB içeriği kuralına uyan ortak üretim modellerini (LBA Systems örneği gibi) değerlendirin.</li>
+        <li>KIZILELMA ve ANKA-3 sınıfında rakip karşılaştırmasını CCA ve Helsing takvimlerine göre güncelleyin.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="dates-h" style="display:grid;gap:12px">
+    <h2 id="dates-h">Yaklaşan tarihler</h2>
+    <div class="dates">
+      <div class="date"><b>3–6 Kas</b><span>Euronaval 2026, Paris: insansız deniz araçları öne çıkıyor</span></div>
+      <div class="date"><b>10 Kas</b><span>Çin nadir toprak kontrollerindeki askı bitiyor</span></div>
+      <div class="date"><b>18 Kas</b><span>Çin İHA bileşen ihracat lisansı başlıyor · Indo Defence, Cakarta</span></div>
+      <div class="date"><b>27 Kas</b><span>Galyum, germanyum, antimon askısı bitiyor</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="news-h" style="display:grid;gap:10px">
+    <h2 id="news-h">Haberler</h2>
+    <div class="filters" role="group" aria-label="Kategori filtresi" id="filters"></div>
+    <div id="list"></div>
+  </section>
+
+  <footer>
+    <span>Açık kaynak haberlerden derlenmiştir. Rakamlar kaynakların beyanıdır; şirket açıklamaları bağımsız olarak doğrulanmamıştır. Her haberin altındaki bağlantı asıl habere gider.</span>
+    <span>Her sabah güncellenir · <a href="arsiv/">Önceki sayılar</a></span>
+  </footer>
+</div>
+
+<script id="cats" type="application/json">
+{
+ "Rakipler & Pazar":"Dünyadaki İHA ve sadık kanat üreticilerinin hamleleri",
+ "Türkiye":"Türk savunma ve İHA ekosisteminden gelişmeler",
+ "İhracat & İhaleler":"Açık pazarlar, fonlar ve ihale süreçleri",
+ "Yeni Teknolojiler":"Otonomi, navigasyon, itki, faydalı yük ve İHA karşıtı sistemler",
+ "Tedarik Zinciri":"Bileşen, mineral ve ihracat kontrolü riskleri",
+ "Enerji & Sağlık":"Küçük modüler reaktörler ve sağlık teknolojileri",
+ "Yapay Zekâ":"Model, kurumsal kullanım, vaka çalışmaları ve siber güvenlik"
+}
+</script>
+<script id="news" type="application/json">
+[
+ {"cat":"Rakipler & Pazar","date":"Ekim","title":"ABD sadık kanat (CCA) programı: ikinci turda üç büyük firma kendi parasıyla yarışıyor","text":"Birinci turda Anduril YFQ-44A ve General Atomics YFQ-42A üretime geçti; YFQ-44A Temmuz'da insan onayıyla AMRAAM füzesi ateşledi. İkinci tur için Boeing MQ-28 Ghost Bat, Lockheed Martin Vectis ve Northrop Grumman Talon ile hazırlanıyor. Hava Kuvvetleri en az 500 CCA almayı, ilk 100'ünü 2029'a kadar hizmete sokmayı planlıyor.","why":"KIZILELMA'nın küresel rakip seti netleşiyor. ABD ürünleri ihracat kısıtlarına tabi olacağı için müttefik ve Körfez pazarlarında Türk sadık kanatlarına alan açık.","src":[["Meta-Defense","https://meta-defense.fr/en/2026/10/08/cca-increment-2-boeing-northrop-lockheed/"],["Overt Defense","https://www.overtdefense.com/2026/10/09/american-industry-puts-forward-collaborative-combat-aircraft-candidates/"]]},
+ {"cat":"Rakipler & Pazar","date":"8 Ekim","title":"Shield AI'ın dikey kalkışlı savaş İHA'sı X-BAT yıl sonunda uçuyor","text":"ABD Donanması 150 milyon dolar ekledi; Shield AI aynı tutarı kendisi koyuyor ve toplam geliştirme bütçesi 400 milyon dolara çıktı. İlk tam ölçekli prototip birkaç hafta içinde hazır olacak, uçuş testleri yıl sonunda başlıyor. Erken operasyonel yetenek hedefi 2029.","why":"Pistten bağımsız, gemiden ve sahadan kalkabilen jet İHA konsepti yeni bir pazar kategorisi açıyor; TB3 ve KIZILELMA'nın gemi tabanlı konumlanmasıyla doğrudan rekabet eder.","src":[["Defense One","https://www.defenseone.com/business/2026/10/shield-ai-expects-fly-its-unmanned-fighter-jet-within-months/416510/"],["Naval News","https://www.navalnews.com/naval-news/2026/10/shield-ai-and-u-s-government-investment-in-x-bat-reaches-400-million/"]]},
+ {"cat":"Rakipler & Pazar","date":"Haziran–Temmuz","title":"Helsing 1,8 milyar dolar topladı; CA-1 Europa'nın elektronik harp sürümü duyuruldu","text":"Alman savunma YZ şirketi 18 milyar dolar değerlemeye ulaştı. 4 ton azami kalkış ağırlıklı otonom savaş İHA'sı CA-1 Europa'nın kinetik sürümü 2027 başında ilk uçuşu, 2029'da ilk operasyonel yeteneği hedefliyor. Elektronik harp sürümü CA-1EA, düşman radarlarını karıştırıp arkadan gelen uçaklara güvenli koridor açmak için tasarlandı.","why":"Avrupa kendi sadık kanadını yapıyor. AB pazarında Türk ürünleri için en güçlü kart sahada kanıtlanmış olmak ve teslim hızı.","src":[["Yahoo Finance","https://finance.yahoo.com/technology/ai/articles/german-ai-defence-firm-helsing-080327845.html"],["Tectonic Defense","https://www.tectonicdefense.com/helsing-unveils-ew-variant-of-ca-1-europa/"]]},
+ {"cat":"Rakipler & Pazar","date":"31 Ekim","title":"General Atomics hibrit-elektrikli, 60 saat havada kalacak gizli İHA geliştiriyor","text":"NextGen adlı uçan kanat tasarımı, yakıt ikmali olmadan 60 saati aşan uçuşu hedefliyor; bu henüz kanıtlanmış bir performans değil, mühendislik hedefi. Keşif ve taarruz için tasarlanıyor ve şirketin modüler Gambit ailesine de veri sağlayacak.","why":"MALE sınıfında dayanım yarışı hibrit itkiye kayıyor; AKINCI ve ANKA'nın gelecek nesilleri için itki yol haritasını etkileyebilir.","src":[["Interesting Engineering","https://interestingengineering.com/military/us-stealth-drone-airborne-two-days-without-refueling"]]},
+ {"cat":"Rakipler & Pazar","date":"29 Eylül – 12 Ekim","title":"Kratos Valkyrie Avrupa'da ilk kez Airbus ile uçtu","text":"Düşük maliyetli jet İHA XQ-58 Valkyrie, Airbus ortaklığıyla Avrupa'daki ilk uçuşunu gerçekleştirdi. Böylece ABD'li bir sadık kanat Avrupa sanayisiyle yerelleştirme yoluna girdi.","why":"Baykar–Leonardo modelinin benzeri; Avrupa pazarında yerli ortaklı teklifler standart hâline geliyor.","src":[["EDS News","https://edsnews.substack.com/p/defense-industry-press-release-roundup-d7e"]]},
+ {"cat":"Rakipler & Pazar","date":"Eylül","title":"Çin, Wing Loong-10B ve gizli uçan kanat CH-7 ile ihracata yükleniyor","text":"Wing Loong-10B Mısır'daki fuarda görüş ötesi taarruz silahlarıyla sergilendi. CASC'nin gizli, yüksek irtifa uzun dayanımlı uçan kanadı CH-7 uçuş testlerinde; analistler ihracat sürümünün Batı'nın satmadığı bir yetenek sunacağını değerlendiriyor.","why":"Orta Doğu ve Afrika'da AKINCI'nın en doğrudan rakibi Çin. Fiyat avantajlarına karşı muharebe geçmişi ve satış sonrası destek öne çıkarılmalı.","src":[["Global Security","https://www.globalsecurity.org/wmd/library/news/china/2026/09/china-260909-globaltimes02.htm"],["TWZ","https://www.twz.com/air/chinas-stealthy-ch-7-long-endurance-drone-is-now-flying"]]},
+ {"cat":"Rakipler & Pazar","date":"31 Ekim","title":"Ucuz İHA üretiminde dev fark: Rusya 7,3 milyon, ABD Ordusu 8.500","text":"Ukrayna istihbaratına göre Rusya bu yıl yaklaşık 7,3 milyon küçük tek kullanımlık İHA üretecek; Ukrayna 10 milyon hedefliyor. ABD'nin Drone Dominance programı 2027 sonuna kadar yaklaşık 250 bin İHA hedefliyor, ancak ilk turda 11 firmadan yalnızca üçü teslimatı tamamladı. Önerilen ABD bütçesinde otonom harp için yaklaşık 55 milyar dolar var.","why":"Kütle (çok sayıda ucuz İHA) artık MALE kadar stratejik. Kamikaze ve dolanan mühimmat hatlarında üretim kapasitesi ihracat kozu olabilir.","src":[["DroneXL","https://dronexl.co/2026/10/31/pentagon-basically-zero-cheap-drones-russia-7-million/"],["Bloomberg","https://www.bloomberg.com/news/features/2026-10-31/us-starts-at-basically-zero-in-building-cheap-military-drones"]]},
+
+ {"cat":"Türkiye","tr":true,"date":"16 Ekim","title":"ANKA-3 için ikinci üretim hattı Kasım'da açılıyor","text":"TUSAŞ'ın Ankara'daki yeni hattı, gövdesi büyütülmüş ve faydalı yükü yaklaşık 1,3 tondan 1,75 tona çıkarılmış sürümü üretecek. TSK'nın 80 adetlik siparişi var, ilk teslimat 2027'de bekleniyor.","why":"Yerli uçan kanat sınıfında seri üretim başlıyor; alt sistem ve yedek parça talebi 2027'den itibaren hızla artacak.","src":[["Breaking Defense","https://breakingdefense.com/2026/10/turkish-aerospace-expands-anka-3-production-with-new-line-for-upgraded-drone/"],["SavunmaSanayiST","https://www.savunmasanayist.com/tusas-anka-3un-yeni-uretim-hatti-tamamlandi/"]]},
+ {"cat":"Türkiye","tr":true,"date":"13 Ekim","title":"AKINCI 16 ülkeye satıldı; Avrupa'nın Eurodrone'u hâlâ sahada değil","text":"Fransız Meta-Defense'in analizine göre AKINCI'nın 16 ülkede sözleşmesi var. Almanya, Fransa, İtalya ve İspanya'nın ortak MALE programı Eurodrone ise operasyonel birliklerden uzak. Suudi Arabistan'la 3 milyar dolarlık anlaşma yerel montaj ve üretimi de kapsıyor.","why":"Avrupa'daki gecikme Türk MALE'leri için pencere; ancak alıcılar giderek daha fazla yerel üretim ve ortak üretim talep ediyor.","src":[["Meta-Defense","https://meta-defense.fr/2026/10/13/bayraktar-akinci-contrats-16-pays/"],["Shephard","https://www.shephardmedia.com/news/air-warfare/how-baykar-turned-the-akinci-into-an-african-and-middle-eastern-export-success/"],["Defence Security Asia","https://defencesecurityasia.com/en/saudi-akinci-drone-operators-graduate-baykar-3-billion-deal/"]]},
+ {"cat":"Türkiye","tr":true,"date":"Temmuz → bugün","title":"Baykar–Leonardo ortaklığı LBA Systems İtalya'da tam faaliyette","text":"Eşit ortaklı şirketin portföyünde KALKAN, TB2, TB3'ten türetilen gemi tabanlı Astore Levante, AKINCI ve KIZILELMA var. KIZILELMA, Leonardo'nun M-346F uçağıyla insanlı-insansız takım uçuşu gösterdi. Baykar bu yıl Piaggio Aerospace'i de satın aldı.","why":"Türk tasarımları AB sertifikasyonu ve AB içeriğiyle Avrupa ihalelerine girebiliyor; SAFE fonuna erişimin en gerçekçi yolu bu model.","src":[["Quwa","https://quwa.org/europe/defence-news-eu/leonardo-baykar-lba-systems-drone-venture-reaches-full-operational-readiness-at-farnborough/"]]},
+ {"cat":"Türkiye","tr":true,"date":"17–30 Ekim","title":"Savunma sanayisi 2026'da 15 milyar dolarlık yeni sözleşme imzaladı","text":"SSB'nin yıl sonu hedefi 20 milyar dolar. Yurt içindeki açık sipariş 13,4 milyar doları geçti; ihracat ilk 9 ayda %15,6 artışla 6,93 milyar dolar oldu. ASELSAN Ekim'de 8 yeni iş aldı; en büyüğü 2,46 milyar avroluk hibrit hava savunma sözleşmesi.","src":[["Dünya","https://www.dunya.com/gundem/savunma-sanayiinde-15-milyar-dolarlik-imza-20-milyar-dolarlik-hedef-haberi-844260"],["Para Ajansı","https://paraajansi.com.tr/sirket-haberleri/aselsan-448-milyar-euro-ve-920-milyon-dolarlik-8-yeni-siparis-aldi-22231293h"]]},
+ {"cat":"Türkiye","tr":true,"date":"24–26 Ekim","title":"AKSUNGUR'dan ilk kez sonobuoy, TUNGA-X'ten havada İHA avı","text":"TURNAs-26 tatbikatında AKSUNGUR, ASELSAN'ın aselBUOY sonobuoy'unu bırakarak denizaltı tespit görevini tamamladı. STM'nin avcı İHA'sı TUNGA-X temsili düşman İHA'yı havada doğrudan isabetle vurdu.","why":"MALE İHA'ların denizaltı savunma harbine girmesi deniz kuvvetleri ihracatında yeni bir satış argümanı.","src":[["Anadolu Ajansı","https://www.aa.com.tr/tr/savunma-sanayisi"]]},
+
+ {"cat":"İhracat & İhaleler","date":"28–29 Ekim","title":"AB SAFE: 21,3 milyar avroluk ikinci tur açıldı","text":"Komisyon 19 ülkenin kredi anlaşmalarını onayladı ve 11 ülkeye yaklaşık 13,5 milyar avro ön finansman ödedi. Yeni turun öncelikleri hava ve füze savunma, İHA ve İHA karşıtı sistemler, mühimmat. Ülkelerden Ukrayna ile ortak alım planlamaları isteniyor.","why":"Parçaların en az %65'i AB, EEA veya Ukrayna'dan gelmeli. Türk üreticiler ya %35'lik dış kaynak payıyla ya da AB'de kurulu ortak şirketler üzerinden girebilir.","detay":["Türkiye proje ortaklığı modeliyle başvurdu; doğrudan kredi kullanamıyor","NATO Genel Sekreteri Rutte Türkiye'nin katılımını destekledi","Hassas sistemlerde üçüncü tarafların ihracat kısıtı koymaması şartı var"],"src":[["Brussels Times","https://www.brusselstimes.com/2383569/eus-e21-3b-safe-loans-seek-defence-upgrades-co-operation-with-ukraine"],["TurDef","https://turdef.com/article/nato-s-rutte-backs-tuerkiye-s-safe-bid-at-eu-envoy-meeting"]]},
+ {"cat":"İhracat & İhaleler","date":"Ağustos → süreç sürüyor","title":"Hindistan'ın 87 MALE İHA ihalesi (yaklaşık 3,6 milyar dolar)","text":"Teklifler Haziran'da kapandı, süreç fiyat teklifi aşamasına geçiyor. Şartlar: 30 saatten uzun dayanım, 35 bin feet üstü tavan, %60'tan fazla yerli içerik. İş en düşük iki teklif arasında %64 ve %36 olarak bölünecek. Hint firmaları IAI, Elbit ve General Atomics ile ortaklık kurdu.","why":"Yüksek yerli içerik şartı ve siyasi koşullar nedeniyle doğrudan Türk katılımı zor; ancak bu ihale Asya'daki MALE fiyatlarını ve rekabet tablosunu belirleyecek.","src":[["IDRW","https://idrw.org/tasls-indigenous-male-uav-completes-final-flight-tests-as-india-moves-ahead-with-%E2%82%B930000-crore-87-drone-tender/"]]},
+ {"cat":"İhracat & İhaleler","date":"27 Ekim","title":"ABD'de İHA karşıtı sistem alımları büyüyor","text":"İç Güvenlik Bakanlığı, 12 firmaya verilen 1,5 milyar dolarlık beş yıllık çerçevenin ardından siber güvenlik ve eğitim alımlarına yöneliyor. L3Harris VAMPIRE sistemi için ABD ve müttefiklerden 500 milyon doları aşan sipariş aldı; Leonardo DRS'ye 500 milyon dolar tavanlı bir sözleşme verildi.","why":"İHA karşıtı sistem pazarı, test için hedef İHA ve tatbikat platformu talebini de büyütüyor.","src":[["DroneLife","https://dronelife.com/2026/10/27/dhs-counter-uas-procurement-cybersecurity-training/"],["EDS News","https://edsnews.substack.com/p/defense-industry-press-release-roundup-d7e"]]},
+
+ {"cat":"Yeni Teknolojiler","date":"29 Ekim","title":"Otonomi yazılımı lisanslanabilir ürün oldu: Shield AI, Hivemind'ı Leonardo'ya verdi","text":"Leonardo, insansız helikopteri Proteus için kendi görev otonomisini Shield AI'ın Hivemind yazılım geliştirme kitiyle yazacak. Ukrayna'da Swarmer gibi firmalar sürü yazılımını sahada 25 İHA'lık gruplarla test etti.","why":"Otonomi platformdan ayrışıyor. Kendi otonomi yığını olan üretici hem platform hem yazılım lisansı satabilir; olmayan lisans almak zorunda kalır.","src":[["EDS News","https://edsnews.substack.com/p/defense-industry-press-release-roundup-d7e"],["Militarnyi","https://militarnyi.com/en/news/ukraine-uses-self-deciding-drone-swarm-against-russian-forces/"]]},
+ {"cat":"Yeni Teknolojiler","date":"Ekim","title":"GPS'siz navigasyon sahaya iniyor","text":"ABD Donanması GPS olmadan hareket hâlindeki gemiye İHA indirmeyi gösterdi; Ordu Mach 5 üstü bir araçta GPS'siz navigasyon test etti. Pentagon'un 200 milyon dolarlık Farseer programı kuantum navigasyonu operasyonel hâle getirmeyi amaçlıyor. Rusya Geran İHA'larına karıştırmaya dayanıklı manyetometre ve görüntüyle konum bulan sistem taktı.","why":"Karıştırmaya dayanıklı navigasyon ihale şartnamelerinde standart hâle geliyor; IMU, manyetometre ve görsel navigasyon modülleri kritik alt sistem.","src":[["Defense Mirror","https://defensemirror.com/news/42209/U_S__Navy_Demonstrates_GPS_Denied_Drone_Landings_on_Moving_Ships"],["Defence-UA","https://en.defence-ua.com/analysis/pentagons_200m_farseer_program_pushes_quantum_navigation_that_already_flew_4_hours_gps_free_with_89_better_accuracy-20146.html"],["Euromaidan Press","https://euromaidanpress.com/2026/10/29/ukraine-finds-russias-geran-drones-fitted-with-a-compass-that-works-through-gps-jamming-but-western-electronics-still-at-their-core"]]},
+ {"cat":"Yeni Teknolojiler","date":"22 Ekim","title":"Avrupa'da 'Çin'siz' FPV İHA ve fiber optik kontrol","text":"Çek STV Group, Çin parçası içermediğini söylediği 10–13 inçlik FPV-NG İHA'sını tanıttı: 6 kg'a kadar faydalı yük, 150 km/s hız, karıştırma ve sahte sinyale dayanıklılık. ABD Deniz Piyadeleri de karıştırılamayan fiber optik kablolu FPV İHA'ları sahada değerlendirdi.","why":"'Çin'siz tedarik zinciri' Avrupa'da satış argümanı hâline geliyor; yerli motor ve ESC kapasitesi rekabet avantajı.","src":[["Army Recognition","https://www.armyrecognition.com/news/army-news/2026/czech-stv-group-develops-china-free-fpv-ng-drone-for-strikes-and-reconnaissance-under-electronic-warfare"],["Defence Industry Europe","https://defence-industry.eu/u-s-marine-corps-conducts-first-field-evaluation-of-fiber-optic-fpv-drones-for-contested-operations/"]]},
+ {"cat":"Yeni Teknolojiler","date":"Ekim","title":"İHA karşıtı sistemlerde yeni silahlar: lazer, ramjet önleyici, İHA'dan atılan füze","text":"L3Harris, ABD Ordusu'nun uzun menzilli İHA karşıtı programı için ramjet itkili önleyici geliştirecek (60 milyon dolar tavan). BAE Systems, bir oktokopterden ateşlenen APKWS güdümlü roketlerle saldırı İHA'larını düşürdü. İsrail'in 100 kW'lık Iron Beam lazeri operasyonel; İngiltere DragonFire lazerini 2027'ye kadar muhriplerine yerleştirecek.","why":"Hedef İHA'ların hayatta kalabilirliği yeniden tasarım gerektiriyor; düşük iz, yüksek hız ve sürü taktikleri öne çıkıyor.","src":[["EDS News","https://edsnews.substack.com/p/defense-industry-press-release-roundup-d7e"],["Tom's Hardware","https://www.tomshardware.com/tech-industry/100kw-iron-beam-laser-becomes-worlds-first-drone-defense-zapper-to-be-operationally-deployed-it-can-also-shoot-down-rockets-mortars-and-other-aerial-threats"],["Army Recognition","https://www.armyrecognition.com/news/navy-news/2026/uk-confirms-dragonfire-laser-weapon-deployment-on-type-45-air-defense-destroyers-by-2027"]]},
+ {"cat":"Yeni Teknolojiler","date":"2 Kasım","title":"Euronaval: insansız deniz araçları ana sahnede","text":"Naval Group, 10 günlük insansız görev hedefleyen 37 metrelik çok amaçlı Seaquest M'yi tanıttı; konteynerli görev modülleri ve sadık kanat modunda çalışabiliyor. ABD'de HII, Donanma için 10 adet ROMULUS orta boy insansız su üstü aracı üretiyor.","why":"Deniz İHA'ları ile hava İHA'larının birlikte çalışması (gemiden kalkış, röle, keşif) yeni entegrasyon ihtiyaçları doğuruyor.","src":[["Naval News","https://www.navalnews.com/event-news/euronaval-2026/2026/11/naval-group-seaquest-m-musv"],["EDS News","https://edsnews.substack.com/p/defense-industry-press-release-roundup-d7e"]]},
+ {"cat":"Yeni Teknolojiler","date":"Ekim","title":"Hipersonik ve küçük turbojet tarafında gelişmeler","text":"ABD'nin hipersonik seyir füzesi HACM ilk uçuş testini Avustralya'da yaptı; scramjet motoru Northrop Grumman'dan. Beehive, harcanabilir İHA'lar için 100 lbf itkili Frenzy 6 turbojetinin ilk testlerini tamamladı.","why":"Kamikaze ve hedef İHA'lar için düşük maliyetli küçük turbojet pazarı hızla büyüyor; yerli itki kapasitesi Çin lisansı riskine karşı da sigorta.","src":[["Air & Space Forces","https://www.airandspaceforces.com/air-force-first-flight-test-hypersonic-attac-cruise-missile/"],["FlightGlobal","https://flightglobal.com/defence/2026/10/beehive-completes-initial-testing-on-frenzy-6-100lbf-turbojet-engine"]]},
+
+ {"cat":"Tedarik Zinciri","date":"Yürürlük 18 Kasım","title":"Çin İHA bileşenlerini ihracat lisansına bağlıyor (Duyuru No. 49)","text":"Lisans yasak anlamına gelmiyor, ancak ihracatçı teknik özellik, kullanım amacı ve son kullanıcı beyan edecek; gümrük şüpheli sevkiyatı bekletebilecek. Pekin ülkelere ve son kullanıcılara farklı davranabilecek.","why":"Taktik ve MALE sınıfı İHA'larda kullanılan Çin menşeli itki, kontrol ve haberleşme parçaları doğrudan kapsamda. 16 gün içinde BOM taraması ve emniyet stoku kararı gerekiyor.","detay":["Fırçasız motor: 48V ve üstü, 3 kW ve üstü, 3 kW/kg ve üstü güç yoğunluğu, 3.000 dev/dk ve altı (dördü birlikte)","Elektronik hız kontrolcüsü (ESC): 48V ve 3 kW ve üstü","İHA motorları: 16 kW üstü; turbojet: 400 N ve üstü itki; 15.420 m üstü yüksek irtifa motorları","Karbon fiber pervane: dönme merkezinden uca 762 mm ve üstü","İHA: 300 km ve üstü menzil veya görüş ötesinde 3 saat ve üstü dayanım","Bu İHA'lara özel otopilot ve haberleşme ekipmanı (30 dBm üstü veya tek istasyondan 10'dan fazla İHA kontrolü)","Muaf: 80 litrenin altında tanklı ve 300 km altı menzilli tarım İHA'ları"],"src":[["Drone Intelligence","https://droneintelligence.ai/insights/china-drone-export-controls-announcement-49"],["Militarnyi","https://militarnyi.com/en/news/china-to-tighten-export-controls-on-drone-engines-autopilots-and-communication-systems/"]]},
+ {"cat":"Tedarik Zinciri","date":"10 Kasım","title":"Çin'in nadir toprak askısı bitiyor","text":"Askıdaki kurallar beş ilave elementi, işleme teknolojilerini ve Çin kökenli malzeme içeren yabancı ürünleri lisansa bağlıyor. ABD 10 Ocak 2027'ye uzatma duyurdu, Çin yazılı teyit vermedi. Disprosyum ve terbiyumu kapsayan Nisan 2025 lisans rejimi zaten yürürlükte.","why":"Ülke dışı kural geri gelirse, NdFeB mıknatıslı motor içeren bir İHA'nın üçüncü ülkeye ihracatı bile Çin lisansına takılabilir. Beylikova'da pilot tesisler tamam, ancak mıknatıs kalitesinde rafinasyon henüz yok.","src":[["Technology.org","https://www.technology.org/2026/10/19/china-rare-earth-export-pause-november-10/"],["Sabah","https://www.sabah.com.tr/ekonomi/nadir-elementte-pilot-tesis-tamam-7681555"]]},
+ {"cat":"Tedarik Zinciri","date":"27 Kasım","title":"Galyum, germanyum ve antimon askısı da sona eriyor","text":"Çin'in bu metallerde ABD'ye ihracat yasağını askıya alan düzenlemesi bitiyor; uzatma işareti yok. CSIS, Batı'da birincil galyum üretiminin hâlâ çok sınırlı olduğunu vurguluyor.","why":"Galyum radar ve veri bağı RF modüllerinde (GaN), germanyum termal kameralarda, antimon mühimmatta kritik. EO/IR ve AESA tedarikinde fiyat ve teslim süresi riski.","src":[["Startup Fortune","https://startupfortune.com/chinas-one-year-pause-on-critical-mineral-export-bans-nears-its-deadline/"],["CSIS","https://www.csis.org/analysis/us-china-trade-truce-has-not-solved-gallium-problem"]]},
+ {"cat":"Tedarik Zinciri","date":"Ekim","title":"Batı'da alternatif tedarik: Tayvan ve Kore öne çıkıyor","text":"ABD'li İHA üreticileri motor ve batarya tedarikinde Tayvan'a kayıyor; Koreli batarya üreticileri yeni pazar görüyor. Ancak mıknatıs ve lityum iyon hücrelerin çoğu hâlâ Çin işlemesine bağlı. ABD Ordusu 2027 sonuna kadar 50 bin fırçasız motor tedarik etmek istiyor.","why":"Alternatif tedarikçilerde kapasite hızla dolacak; erken sözleşme yapan avantaj sağlar.","src":[["Seoul Economic Daily","https://en.sedaily.com/international/2026/10/16/us-drone-makers-turn-to-taiwan-to-cut-chinese-parts"],["Tech Times","https://www.techtimes.com/articles/324566/20260815/drone-tariff-rally-hits-engineering-wall-magnets-batteries-stay-china-made.htm"]]},
+ {"cat":"Tedarik Zinciri","date":"16 Ekim","title":"Tayvan YZ çipi ihracatını sıkılaştırıyor, Çin büyük YZ modellerini kısıtlıyor","text":"Tayvan, YZ sunucuları ve ileri yarı iletkenleri kontrol listesine ekleyecek. Çin'in taslağı ise savunma ve kritik altyapı YZ ajanlarının ihracatını yasaklıyor; görüş süresi 15 Kasım'da bitiyor.","src":[["Pomegra","https://pomegra.io/news/china-and-taiwan-tighten-ai-tech-export-curbs-in-2026"]]},
+ {"cat":"Tedarik Zinciri","date":"29 Ekim","title":"Eklemeli imalat havacılık ve savunmada seri üretime geçiyor","text":"Bir Avrupa firması uydular için 50 bine kadar 3D baskı parça üretmek üzere hibe aldı. MELD, alüminyum ve titanyumu eritmeden basan yöntemle savunmaya hizmet edecek yeni tesisini 2027'de açıyor.","why":"Düşük adetli, uzun tedarik süreli yedek parçalarda stok yerine dijital envanter modeli mümkün hâle geliyor.","src":[["3DPrint.com","https://3dprint.com/335681/3d-printing-news-briefs-10-29-2026/"]]},
+
+ {"cat":"Enerji & Sağlık","tr":true,"date":"Ekim","title":"Türkiye SMR'ye hazırlanıyor; ABD'de ilk ticari SMR'ye izin","text":"Tüpraş ABD'nin USTDA ajansıyla bir yıllık SMR çalışması başlattı, SMR çerçeve kanunu taslağı hazır. Türkiye'nin ilk SMR'ı için hedef 2030'ların ilk yarısı. ABD'de NRC, TVA'nın 300 MW'lık reaktörüne izni takvimden önce verdi; İngiltere'de 14 SMR'lik filo için ortak girişim kuruluyor.","why":"SMR'ler askerî üsler ve uzak bölgeler için de konuşuluyor; hassas üretim kapasitesi olan savunma firmaları için yeni tedarik pazarı.","src":[["Endeks24","https://www.endeks24.com/tupras-ustda-kucuk-moduler-reaktor-anlasmasi"],["NRC","https://www.nrc.gov/about-nrc/news-releases/2026/26-079"],["NucNet","https://www.nucnet.org/news/joint-venture-plans-announced-for-14-small-modular-reactors-in-uk-10-1-2026"]]},
+ {"cat":"Enerji & Sağlık","date":"Ekim","title":"Tıbbi cihazlarda üretken YZ kuralları şekilleniyor","text":"FDA'nın görüş dönemi kapandı, sırada taslak kılavuz var. Eko, YZ ile kalp üfürümü tespit eden yeni stetoskobunu FDA onayıyla piyasaya sürdü.","src":[["Nova Pharma News","https://novapharmanews.com/us/news/fda-generative-ai-medical-devices-discussion-paper-august-2026"],["Entrepreneur Loop","https://entrepreneurloop.com/keikku-digital-stethoscope-lapsi-health"]]},
+
+ {"cat":"Yapay Zekâ","date":"Son hafta","title":"Anthropic halka arz başvurusu yaptı; Google'ın en güçlü modeli yalnızca siber savunmaya açık","text":"Anthropic'in Nasdaq listelemesi 16 Kasım haftası bekleniyor; OpenAI fon hedefini 30 milyar dolardan yaklaşık 20 milyar dolara indirdi. Google'ın açık bulup yama yazan Gemini 4 Carbon'u bağımsız sıralamada zirvede, ancak yalnızca seçilmiş siber savunma ekiplerine açık. Google ayrıca 185 milyar dolarlık Altın Kubbe füze savunma programının veri güvenliği için Pentagon'la görüşüyor.","src":[["The Signal","https://thesignal.substack.com/p/open-books-locked-models-and-picky"],["Mind & Machine","https://mindandmachineweekly.substack.com/p/mind-and-machine-weekly-1-november"],["Business Standard","https://www.business-standard.com/world-news/google-in-talks-with-pentagon-to-join-trump-s-golden-dome-defence-programme-126103100094_1.html"]]},
+ {"cat":"Yapay Zekâ","tr":true,"date":"Vaka","title":"ASELSAN: YZ ile yılda 39 milyon dolar verimlilik","text":"730 bin adam-saat tasarruf sağlandı. Modeller kapalı ağda ve her alana özel eğitiliyor; İHA kamerası geliştirme süresi 8 yıldan 3 yıla indi.","why":"Savunmada veri dışarı çıkamadığı için kazanç, kendi altyapısında çalışan ve alana özel eğitilmiş modellerden geliyor.","src":[["Forbes Türkiye","https://www.forbes.com.tr/haberler/aselsan-yapay-zeka-ile-39-milyon-dolarlik-verimlilik-artisi-sagladi"]]},
+ {"cat":"Yapay Zekâ","date":"Vaka","title":"Savunma üretiminde YZ: teslim süresi %75 kısaldı","text":"BCG'nin derlediği vakalarda tedarikçi gecikmesini öngören araç zamanında teslimatı %45 iyileştirdi. Bir tersane, mühendislere planlama ve simülasyon ajanları vererek mühendislik eforunu %40, teslim süresini %75 azalttı. Bir bakım firmasının asistanı arama ve evrak işini %40 kısalttı. GE Aerospace, aylar süren motor ön tasarımını üretken YZ ile bir güne indirdiğini açıkladı.","why":"İHA üretiminde en hızlı geri dönüş tedarikçi risk tahmini, tasarım varyant üretimi ve arıza kayıtlarından cevap veren bakım asistanında.","src":[["BCG","https://www.bcg.com/publications/2026/the-ai-first-aerospace-and-defense-company"],["GE Aerospace","https://www.geaerospace.com/news/press-releases/ge-aerospace-completes-design-studies-hypersonic-ramjet-generative-ai"]]},
+ {"cat":"Yapay Zekâ","date":"21 Ekim","title":"Şirketler MCP sunucularıyla YZ ajanlarına kapı açıyor","text":"Walmart, onaylı YZ ajanlarının harcama limitiyle alışveriş yapabildiği bir MCP sunucusu açtı. Aynı hafta Oracle NetSuite ERP için ajan araç seti, onlarca şirket de sipariş, lojistik ve intranet için MCP sunucusu duyurdu. Radware'e göre üretimde 10 binden fazla MCP sunucusu var.","why":"Tedarikçi portalları ve ERP'ler YZ ajanlarına açıldıkça satın alma ve teklif süreçleri hızlanacak; erişim yetkisi ve harcama limiti tasarımı kritik.","src":[["AI Weekly","https://aiweekly.co/alerts/walmart-debuts-agent-gateway-mcp-server-and-agent-profiles-for-approved-ai"],["Agentic.ai","https://agentic.ai/news"]]},
+ {"cat":"Yapay Zekâ","date":"Ekim","title":"Savunma tedarik zincirine siber saldırılar arttı","text":"Popüler bir YZ yazılım paketine kimlik çalan kod yerleştirildi, bir yedekleme sağlayıcısı üzerinden 2.250'den fazla müşteriye sızıldı. Kuzey Koreli Lazarus grubu sahte işe alımcı profilleriyle Güney Koreli savunma kuruluşlarını hedef aldı.","why":"Alt yükleniciler ana yüklenicilere giden en kolay yol. Tasarım verisi taşıyan tedarikçilerde güvenlik denetimi sözleşme şartına dönüşüyor.","src":[["Lumu","https://lumu.io/blog/black-october-2026/"]]}
+]
+</script>
+<script>
+(function(){
+  var data = JSON.parse(document.getElementById('news').textContent);
+  var desc = JSON.parse(document.getElementById('cats').textContent);
+  var cats = ['Tümü'];
+  data.forEach(function(n){ if (cats.indexOf(n.cat) < 0) cats.push(n.cat); });
+  var filters = document.getElementById('filters'), list = document.getElementById('list');
+  var current = 'Tümü';
+  try { var s = localStorage.getItem('bulten-filtre'); if (s && cats.indexOf(s) > -1) current = s; } catch(e){}
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function render(){
+    filters.innerHTML = cats.map(function(c){
+      var count = c === 'Tümü' ? data.length : data.filter(function(n){ return n.cat === c; }).length;
+      return '<button type="button" aria-pressed="' + (c === current) + '" data-c="' + esc(c) + '">' + esc(c) + ' · ' + count + '</button>';
+    }).join('');
+    var html = '', last = '';
+    data.forEach(function(n){
+      if (current !== 'Tümü' && n.cat !== current) return;
+      if (n.cat !== last){
+        html += '<h3 class="cat-title">' + esc(n.cat) + '</h3>' + (desc[n.cat] ? '<p class="cat-desc">' + esc(desc[n.cat]) + '</p>' : '');
+        last = n.cat;
+      }
+      html += '<article class="item"><div class="meta">' +
+        (n.tr ? '<span class="pill tr">Türkiye</span>' : '<span class="pill">Dünya</span>') +
+        '<span>' + esc(n.date) + '</span></div>' +
+        '<h3>' + esc(n.title) + '</h3><p>' + esc(n.text) + '</p>' +
+        (n.why ? '<p class="why"><b>Üretici için anlamı:</b> ' + esc(n.why) + '</p>' : '') +
+        (n.detay ? '<details><summary>Ayrıntılar</summary><ul>' + n.detay.map(function(d){ return '<li>' + esc(d) + '</li>'; }).join('') + '</ul></details>' : '') +
+        '<p class="src">Kaynak: ' + n.src.map(function(s){ return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join(' · ') + '</p></article>';
+    });
+    list.innerHTML = html;
+  }
+  filters.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    current = b.getAttribute('data-c');
+    try { localStorage.setItem('bulten-filtre', current); } catch(e){}
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>
