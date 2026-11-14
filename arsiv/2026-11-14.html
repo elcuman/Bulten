@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kritik Teknoloji Bülteni</title>
+<meta name="description" content="İHA ve savunma teknolojilerinde dünyadan günlük özet: rakipler, yeni teknolojiler, ihracat fırsatları, tedarik zinciri, enerji ve yapay zekâ.">
+<meta property="og:title" content="Kritik Teknoloji Bülteni">
+<meta property="og:description" content="İHA ve savunma teknolojilerinde dünyadan günlük özet.">
+<script>try{var t=localStorage.getItem('bulten-tema');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Tasarım: tek sütun brifing. Künye → göstergeler → özet → takvim → grafikler → yol haritası → haberler */
+:root{
+  --bg:#fbfbfa;--ink:#16191d;--muted:#666c74;--line:#e5e5e2;--panel:#f1f2f3;--bar-bg:#e7e8ea;
+  --accent:#1d4e89;--warm:#b4532a;--good:#2f6b4f;
+  --serif:"IBM Plex Serif",Georgia,serif;--sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d0f12;--ink:#eceef1;--muted:#9aa1a9;--line:#252a30;--panel:#161a1f;--bar-bg:#232830;
+  --accent:#8fb6e8;--warm:#e89c78;--good:#7cc7a2;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0f12;--ink:#eceef1;--muted:#9aa1a9;--line:#252a30;--panel:#161a1f;--bar-bg:#232830;
+  --accent:#8fb6e8;--warm:#e89c78;--good:#7cc7a2;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));padding-block:0 72px;transition:background .2s,color .2s}
+.wrap{max-width:820px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.label{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h2{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 6px;line-height:1.25}
+.lede{margin:0 0 18px;color:var(--muted);font-size:15.5px}
+
+/* Künye */
+header{display:grid;gap:10px;padding-top:26px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:3px solid var(--ink);padding-top:12px}
+.actions{display:flex;gap:10px;align-items:center}
+.actions a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;font-weight:600;margin-right:4px}
+.btn{font:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;border:1px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:6px 13px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn svg{width:15px;height:15px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(36px,7vw,56px);line-height:1.04;letter-spacing:-.015em;margin:14px 0 0;text-wrap:balance}
+.sub{margin:0;color:var(--muted);font-size:17px;max-width:60ch}
+
+/* Göstergeler */
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.kpi{padding:18px 16px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:4px;align-content:start}
+.kpi b{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--ink)}
+.kpi span{font-size:14px;line-height:1.4;color:var(--muted)}
+.kpi:first-child b{color:var(--warm)}
+
+/* Özet */
+.brief{background:var(--panel);border-radius:14px;padding:28px}
+.brief ol{list-style:none;counter-reset:n;margin:0;padding:0;display:grid;gap:16px}
+.brief ol li{counter-increment:n;position:relative;padding-left:40px}
+.brief ol li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:14px;color:var(--accent)}
+.brief li b{font-weight:600}
+.todo{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.todo .label{display:block;margin-bottom:10px}
+.todo ul{margin:0;padding-left:18px;display:grid;gap:8px}
+
+/* Takvim */
+.tl{position:relative;padding:34px 0 0}
+.tl-track{position:absolute;left:0;right:0;top:44px;height:2px;background:var(--line)}
+.tl-items{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:14px}
+.tl-item{display:grid;gap:4px;padding-top:28px;position:relative;min-width:0}
+.tl-item::before{content:"";position:absolute;top:4px;left:0;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--warm)}
+.tl-item.past::before{border-color:var(--muted)}
+.tl-item b{font-family:var(--mono);font-size:14px;color:var(--warm)}
+.tl-item span{font-size:14.5px;line-height:1.4}
+.tl-item small{font-size:12.5px;color:var(--muted)}
+@media (max-width:600px){
+  .tl-track{left:6px;right:auto;top:34px;bottom:0;width:2px;height:auto}
+  .tl-items{grid-auto-flow:row;gap:18px}
+  .tl-item{padding:0 0 0 30px}
+  .tl-item::before{top:3px}
+}
+
+/* Grafikler */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px}
+.chart{border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px;align-content:start}
+.chart h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:0;line-height:1.3}
+.bars{display:grid;gap:10px}
+.bar{display:grid;gap:4px}
+.bar-top{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.bar-top b{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-track{height:10px;border-radius:5px;background:var(--bar-bg);overflow:hidden}
+.bar-fill{height:100%;border-radius:5px;background:var(--accent);min-width:3px}
+.bar.hl .bar-fill{background:var(--warm)}
+.chart-note{font-size:12.5px;color:var(--muted);margin:0}
+
+/* Yol haritası */
+.road{border:1px solid var(--line);border-radius:12px;padding:20px;overflow-x:auto}
+.road-grid{min-width:580px;padding:0 34px 0 0;display:grid;grid-template-columns:150px 1fr;row-gap:14px;align-items:center}
+.road-axis{grid-column:2;position:relative;height:20px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.road-axis span{position:absolute;transform:translateX(-50%)}
+.road-label{font-size:14px;font-weight:500;line-height:1.3;padding-right:10px}
+.road-line{position:relative;height:28px}
+.road-line::before{content:"";position:absolute;left:0;right:0;top:13px;height:2px;background:var(--line)}
+.road-span{position:absolute;top:12px;height:4px;background:var(--accent);opacity:.35;border-radius:2px}
+.road-ev{position:absolute;top:7px;transform:translateX(-50%);display:grid;justify-items:center}
+.road-ev i{width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.road-ev.tr i{background:var(--warm)}
+.road-ev em{font-style:normal;font-size:11.5px;color:var(--muted);white-space:nowrap;margin-top:2px}
+.road-now{position:absolute;top:-4px;bottom:-4px;width:0;border-left:1px dashed var(--warm)}
+
+/* Haberler */
+.filters{display:flex;gap:22px;overflow-x:auto;position:sticky;top:0;background:var(--bg);padding:14px 0 0;border-bottom:1px solid var(--line);z-index:3;scrollbar-width:none}
+.filters button{font:inherit;font-size:15px;border:0;background:none;color:var(--muted);padding:0 0 12px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;display:inline-flex;gap:6px;align-items:center}
+.filters button:hover{color:var(--ink)}
+.filters button[aria-pressed="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--accent)}
+.filters small{font-family:var(--mono);font-size:12px;color:var(--muted)}
+#list{display:grid;min-width:0}
+.cat-head{display:flex;gap:12px;align-items:center;margin:44px 0 2px}
+.cat-ico{width:38px;height:38px;border-radius:10px;background:var(--panel);display:grid;place-items:center;flex:none;color:var(--accent)}
+.cat-ico svg{width:20px;height:20px}
+.cat-title{font-family:var(--serif);font-weight:600;font-size:24px;margin:0}
+.cat-desc{margin:0 0 6px 50px;color:var(--muted);font-size:15px}
+.sub-list{margin:0 0 4px 50px;font-size:13px;color:var(--muted);letter-spacing:.02em}
+.sub-title{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:26px 0 0;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.more{font:inherit;font-size:14.5px;font-weight:600;color:var(--accent);background:none;border:0;padding:16px 0 4px;cursor:pointer;text-align:left}
+.more:hover{text-decoration:underline}
+.item{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:118px minmax(0,1fr);column-gap:20px;row-gap:8px}
+.item>*{grid-column:2;min-width:0}
+.item>.meta{grid-column:1;grid-row:1 / span 6;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--muted);padding-top:3px}
+.pill{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--warm)}
+.pill:not(.tr){display:none}
+.item h3{font-family:var(--serif);font-size:20px;line-height:1.3;margin:0;font-weight:600;text-wrap:balance}
+.item p{margin:0}
+details{font-size:15.5px}
+summary{cursor:pointer;color:var(--accent);font-size:14px;font-weight:500}
+details ul{margin:8px 0 0;padding-left:18px;display:grid;gap:5px}
+.src{font-size:13.5px;color:var(--muted)}
+.src a{color:var(--muted)}
+.src a:hover{color:var(--accent)}
+.ref-sum{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
+.ref-sum::-webkit-details-marker{display:none}
+.ref-sum h2{margin:0}
+.ref-sum .lede{grid-column:1;margin:0;font-size:14.5px}
+.ref-sum::after{content:"+";grid-column:2;grid-row:1 / span 2;font-size:26px;line-height:1;color:var(--muted);font-weight:300}
+#ref-box[open] .ref-sum::after{content:"−"}
+#ref-box[open] .ref-sum{border-bottom:0}
+#kaynakca ol{margin:8px 0 0;padding-left:28px;columns:2 300px;column-gap:32px;font-size:14px;line-height:1.5}
+#kaynakca li{break-inside:avoid;margin:0 0 10px;color:var(--muted)}
+#kaynakca li a{color:var(--ink);font-weight:500}
+#kaynakca li span{display:block;font-size:13px}
+footer{color:var(--muted);font-size:14px;display:grid;gap:4px;border-top:3px solid var(--ink);padding-top:14px}
+.toast{position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;z-index:5}
+@media (max-width:600px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi b{font-size:24px}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .item>.meta{grid-column:1;grid-row:auto;flex-direction:row}
+  .item>*{grid-column:1}
+  .brief{padding:22px 18px}
+  .btn .t{display:none}
+}
+@media (prefers-reduced-motion:reduce){body{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="top">
+      <span class="label" id="issue">14 Kasım 2026 · Sayı 13</span>
+      <span class="actions">
+        <a href="#kaynakca">Kaynakça</a>
+        <a href="./">Arşiv</a>
+        <button type="button" class="btn" id="theme" aria-label="Temayı değiştir"></button>
+        <button type="button" class="btn solid" id="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13"/><path d="m7 8 5-5 5 5"/></svg><span class="t">Paylaş</span></button>
+      </span>
+    </div>
+    <h1>Kritik Teknoloji Bülteni</h1>
+    <p class="sub">İHA ve savunma teknolojilerinde dünyadan günlük özet: rakipler, yeni teknolojiler, ihracat fırsatları, tedarik zinciri, enerji ve yapay zekâ.</p>
+  </header>
+
+  <section aria-label="Günün rakamları"><div class="kpis" id="kpis"></div></section>
+
+  <section class="brief" aria-labelledby="brief-h">
+    <h2 id="brief-h">Yönetici özeti</h2>
+    <ol>
+      <li><b>İHA üretiminde ölçek ve sarf modeli.</b> ABD Ordusu küçük taarruz İHA'larını stoklamak yerine sürekli yenisini almaya geçiyor; Drone Dominance kapsamındaki ilk 30.000 İHA'nın teslimatı sürüyor ve Tobyhanna'da 2027 sonuna kadar 50.000 fırçasız motor hedefleniyor. Lockheed Martin 100.000'inci GMLRS roketini teslim ederek yıllık yaklaşık 14.000 adetlik üretim hızına ulaştı.</li>
+      <li><b>Sadık kanatta otonomi ve gemi entegrasyonu.</b> Shield AI'ın Hivemind yazılımı birden fazla CCA'yı ilk kez kol uçuşunda ve görüş ötesi hava muharebesi taktiklerinde birlikte uçurdu. Kraliyet Donanması, Northrop Grumman ile Talon'un 2027'de uçak gemisinden kaldırılması için niyet beyanını 12 Kasım'da imzaladı.</li>
+      <li><b>Hava savunma ve İHA karşıtı pazarda yeni sözleşmeler.</b> Rheinmetall Belçika'ya 20 Skyranger 30 satacak; NATO 16 sistemlik İHA karşıtı pazar yerini açtı. ASELSAN 1,1 milyar dolarlık hava savunma ihracatı imzaladı; şirketin sipariş birikimi 30 milyar doları aştı. ABD'de JIATF-401 ve DHS iç güvenlikte İHA karşıtı kabiliyetleri hızlandırıyor.</li>
+      <li><b>Kritik metallerde fiyat ayrışması ve tarih baskısı.</b> Rotterdam'da tungsten (APT) fiyatı Çin iç piyasasının 3,74 katına çıktı; ABD'de DFARS kısıtlaması 1 Ocak 2027'de başlıyor. Çin'in galyum, germanyum ve antimon askısı 27 Kasım'da doluyor; USA Rare Earth disprozyum ve samaryum kıtlığı nedeniyle beklentinin çok altında gelir açıkladı.</li>
+      <li><b>Fonlama, YZ modelleri ve siber yamalar.</b> UForce 6 milyar dolar değerlemeyle 700 milyon dolar topladı; uzay tarafında CesiumAstro 730, Northwood 375 milyon dolar aldı. Google Gemini 4 Hydrogen'i yayımladı; CISA aktif istismar edilen altı açığı kataloğa ekledi ve Outlook'taki sıfırıncı gün açığı Kasım yamasıyla kapatıldı.</li>
+    </ol>
+    <div class="todo"><span class="label">Bu hafta için öneriler</span>
+      <ul>
+        <li>Galyum, germanyum ve antimon askısının 27 Kasım'da bitişine ve 1 Ocak 2027 DFARS tungsten kısıtlamasına karşı ilgili bileşenlerde stok, alternatif kaynak ve fiyat (Rotterdam–Çin farkı) durumunu tedarikçilerle teyit edin.</li>
+        <li>NATO İHA karşıtı pazar yeri senaryoları (alan, sınır, konvoy, nokta koruması) ile DIU'nun 30 Kasım son tarihli insansız su üstü aracı çağrısını ürün portföyünüzle karşılaştırın; Indo Defence (18–21 Kasım) ve I/ITSEC (30 Kasım–3 Aralık) katılım planını netleştirin.</li>
+        <li>Outlook (CVE-2026-124194), Chrome 157.0.8103.50 ve Barracuda ESG yamalarının kurumunuzda uygulandığını kontrol edin; MCP tabanlı ajan entegrasyonlarında kullanıcı bazlı oturum ve onay kuyruğu gibi yetki kontrollerini gözden geçirin.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="tl-h">
+    <h2 id="tl-h">Yaklaşan tarihler</h2>
+    <div class="tl"><div class="tl-track"></div><div class="tl-items" id="timeline"></div></div>
+  </section>
+
+  <section aria-labelledby="ch-h">
+    <h2 id="ch-h">Rakamlarla gündem</h2>
+    <p class="lede">Haberlerdeki verilerin görsel özeti.</p>
+    <div class="charts" id="charts"></div>
+  </section>
+
+  <section aria-labelledby="road-h">
+    <h2 id="road-h">Yol haritası</h2>
+    <p class="lede" id="road-lede"></p>
+    <div class="road"><div class="road-grid" id="road"></div></div>
+  </section>
+
+  <section aria-labelledby="news-h">
+    <h2 id="news-h">Haberler</h2>
+    <div class="filters" role="group" aria-label="Kategori filtresi" id="filters"></div>
+    <div id="list"></div>
+  </section>
+
+  <section id="kaynakca">
+    <details id="ref-box">
+      <summary class="ref-sum"><h2 id="ref-h">Kaynakça</h2><span class="lede" id="ref-lede"></span></summary>
+      <ol id="refs"></ol>
+    </details>
+  </section>
+
+  <footer>
+    <span>Açık kaynak haberlerden derlenmiştir. Rakamlar kaynakların beyanıdır; şirket açıklamaları bağımsız olarak doğrulanmamıştır. Her haberin altındaki bağlantı asıl habere gider.</span>
+    <span>Her sabah güncellenir · <a href="./">Önceki sayılar</a></span>
+  </footer>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script id="viz" type="application/json">
+{
+ "issueDate": "2026-11-14",
+ "issueLabel": "14 Kasım 2026",
+ "kpis": [
+  {
+   "value": "700 mn $",
+   "label": "UForce'un 6 milyar dolar değerlemeyle topladığı A serisi"
+  },
+  {
+   "value": "1,1 mlr $",
+   "label": "ASELSAN'ın tek kalem hava savunma ihracat sözleşmesi"
+  },
+  {
+   "value": "100.000",
+   "label": "Lockheed Martin'in teslim ettiği GMLRS roketi"
+  },
+  {
+   "value": "20",
+   "label": "Rheinmetall'in Belçika'ya satacağı Skyranger 30"
+  },
+  {
+   "value": "3,74×",
+   "label": "Rotterdam tungsten (APT) fiyatının Çin'e oranı"
+  },
+  {
+   "value": "450 mn $",
+   "label": "Viasat'ın Space Data Network sözleşme tavanı"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2026-11-18",
+   "label": "18–21 Kas",
+   "text": "Indo Defence 2026, Cakarta · Çin'in yeni İHA ihracat kontrol listesi yürürlükte"
+  },
+  {
+   "date": "2026-11-24",
+   "text": "ABD HK cislunar uydu RFI yanıtları · DARPA BEAMERS gizli ek talebi · CISA KEV federal yama son tarihi"
+  },
+  {
+   "date": "2026-11-27",
+   "text": "Çin'in ABD'ye galyum, germanyum ve antimon ihracat yasağındaki askının bitişi"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "DIU hava savunmalı insansız su üstü aracı yarışmasında teklif son günü · I/ITSEC, Orlando (30 Kasım–3 Aralık)"
+  },
+  {
+   "date": "2026-12-01",
+   "label": "1–2 Ara",
+   "text": "ICS 2026, Londra: savunma kompozitleri çalıştayı"
+  },
+  {
+   "date": "2026-12-11",
+   "text": "ABD federal geçici bütçesinin sona ermesi; FY2027 savunma ödenekleri bekliyor"
+  }
+ ],
+ "charts": [
+  {
+   "title": "Amonyum paratungstat (APT) fiyatı (dolar/kg)",
+   "bars": [
+    {
+     "label": "Rotterdam, Ekim 2026",
+     "value": 278.22,
+     "display": "278,2",
+     "hl": true
+    },
+    {
+     "label": "Çin fabrika çıkış, Ekim 2026",
+     "value": 74.43,
+     "display": "74,4"
+    },
+    {
+     "label": "Rotterdam, Şubat 2025",
+     "value": 34.6,
+     "display": "34,6"
+    },
+    {
+     "label": "Çin fabrika çıkış, Şubat 2025",
+     "value": 28.92,
+     "display": "28,9"
+    }
+   ],
+   "note": "MetalMiner verileri; Şubat 2025 değerleri aylık ortalama. Fark Ekim'de 3,74 kata çıktı (2021–2025 ortalaması 1,24 kat).",
+   "src": [
+    [
+     "Canadian Mining Journal",
+     "https://www.canadianminingjournal.com/news/western-tungsten-prices-nearly-quadruple-chinas-report/"
+    ]
+   ]
+  },
+  {
+   "title": "ASELSAN 2026 göstergeleri (milyar dolar)",
+   "bars": [
+    {
+     "label": "Sipariş birikimi",
+     "value": 30,
+     "display": ">30",
+     "hl": true
+    },
+    {
+     "label": "9 aylık toplam yeni iş",
+     "value": 14,
+     "display": "14"
+    },
+    {
+     "label": "Bu yılki yeni ihracat (yaklaşık)",
+     "value": 4.3,
+     "display": "4,3"
+    },
+    {
+     "label": "9 aylık yeni ihracat sözleşmeleri",
+     "value": 1.9,
+     "display": "1,9"
+    },
+    {
+     "label": "Kasım hava savunma ihracatı",
+     "value": 1.1,
+     "display": "1,1",
+     "hl": true
+    }
+   ],
+   "note": "Anadolu Ajansı'nın 4 Kasım tarihli haberindeki rakamlar.",
+   "src": [
+    [
+     "Foreks / AA",
+     "https://www.foreks.com/haber/detay/6aeaf37d4b1852391445b374/AA/tr/hava-savunma-aselsan-i-yeni-ihracat-rekoruna-tasidi-04-11-26/"
+    ]
+   ]
+  },
+  {
+   "title": "Son haftalarda büyük savunma, İHA ve uzay finansmanları (milyon dolar)",
+   "bars": [
+    {
+     "label": "Shield AI",
+     "value": 2000,
+     "display": "2.000"
+    },
+    {
+     "label": "Zipline",
+     "value": 1500,
+     "display": "1.500"
+    },
+    {
+     "label": "CesiumAstro",
+     "value": 730,
+     "display": "730"
+    },
+    {
+     "label": "UForce",
+     "value": 700,
+     "display": "700",
+     "hl": true
+    },
+    {
+     "label": "Northwood Space",
+     "value": 375,
+     "display": "375"
+    },
+    {
+     "label": "Harbinger",
+     "value": 240,
+     "display": "240"
+    }
+   ],
+   "note": "UForce 12 Kasım; diğerleri Crunchbase'in 31 Ekim–6 Kasım haftası listesi. Shield AI tutarı hisse, yapılandırılmış öz kaynak ve borcu birlikte içeriyor.",
+   "src": [
+    [
+     "Crunchbase News",
+     "https://news.crunchbase.com/venture/biggest-startup-rounds-ai-defense-space-tech-shield-zipline/"
+    ],
+    [
+     "Defence Industry Europe",
+     "https://defence-industry.eu/uforce-raises-700-million-at-a-6-billion-valuation-to-build-more-drones-in-ukraine-and-abroad/"
+    ]
+   ]
+  },
+  {
+   "title": "Kasım'da açılan YZ ve ajan depolarının yıldız sayısı",
+   "bars": [
+    {
+     "label": "janestreet/agent_skills",
+     "value": 8335,
+     "display": "8.335",
+     "hl": true
+    },
+    {
+     "label": "KKKKhazix/agent-autoloop",
+     "value": 5169,
+     "display": "5.169"
+    },
+    {
+     "label": "expo/exact",
+     "value": 4045,
+     "display": "4.045"
+    },
+    {
+     "label": "shanselman/gputaskman",
+     "value": 3103,
+     "display": "3.103"
+    },
+    {
+     "label": "caru-ini/stack-diagram",
+     "value": 2485,
+     "display": "2.485"
+    },
+    {
+     "label": "DIYgod/pinky",
+     "value": 2090,
+     "display": "2.090"
+    }
+   ],
+   "note": "1 Kasım 2026'dan sonra oluşturulan depoların 14 Kasım itibarıyla toplam yıldızı (GitHub arama API'si).",
+   "src": [
+    [
+     "GitHub arama API",
+     "https://api.github.com/search/repositories?q=created:%3E2026-10-31+stars:%3E300&sort=stars&order=desc"
+    ]
+   ]
+  }
+ ],
+ "roadmap": {
+  "start": 2026,
+  "end": 2034,
+  "lede": "Programların açıklanmış hedef tarihleri. Kesik çizgi bugünü gösterir.",
+  "rows": [
+   {
+    "label": "Kraliyet Donanması Talon (VANQUISH)",
+    "events": [
+     {
+      "year": 2027.5,
+      "text": "Uçak gemisinden kalkış gösterimi"
+     }
+    ]
+   },
+   {
+    "label": "ABD Uzay Kuvvetleri cislunar",
+    "events": [
+     {
+      "year": 2027.5,
+      "text": "Oracle-M fırlatma (USSF-63)"
+     },
+     {
+      "year": 2029.9,
+      "text": "Beş uyduluk sistem ihtiyacı"
+     }
+    ]
+   },
+   {
+    "label": "GMLRS üçüncü motor kaynağı",
+    "events": [
+     {
+      "year": 2027.5,
+      "text": "GDOTS motor yeterliliği"
+     }
+    ]
+   },
+   {
+    "label": "Rheinmetall Skyranger 30 – Belçika",
+    "events": [
+     {
+      "year": 2028.9,
+      "text": "Teslimatların başlaması"
+     }
+    ]
+   },
+   {
+    "label": "Saab – İsveç FDI fırkateynleri",
+    "events": [
+     {
+      "year": 2027.0,
+      "text": "Teslimat başlangıcı"
+     },
+     {
+      "year": 2034.0,
+      "text": "Teslimatların tamamlanması"
+     }
+    ]
+   },
+   {
+    "label": "Türkiye Eurofighter",
+    "tr": true,
+    "events": [
+     {
+      "year": 2030.0,
+      "text": "İlk teslimat"
+     }
+    ]
+   }
+  ]
+ }
+}
+</script>
+<script id="cats" type="application/json">
+{
+ "Savunma Pazarı": "Sadık kanat, savaş İHA'ları ve küresel üretim yarışı",
+ "Ülkeler": "ABD, İsrail, Avrupa, Asya, Körfez ve Türkiye savunma sanayileri",
+ "İhracat & Düzenleme": "İhaleler, savunma fonları ve ihracat kontrolü kuralları",
+ "Teknoloji": "Otonomi, navigasyon, İHA karşıtı sistemler, robotik, uzay, batarya ve itki",
+ "Tedarik & Hammadde": "Çin kontrolleri, nadir toprak, kritik mineraller, kompozit, çip ve eklemeli imalat",
+ "Yatırım": "Savunma teknolojisi fonlamaları, değerlemeler ve satın almalar",
+ "Enerji & Sağlık": "Küçük modüler reaktörler ve sağlık teknolojileri",
+ "Yapay Zekâ": "Gündem, vaka çalışmaları, MCP sunucuları, GitHub depoları ve siber güvenlik"
+}
+</script>
+<script id="news" type="application/json">
+[
+ {
+  "cat": "Savunma Pazarı",
+  "sub": "Sadık kanat ve savaş İHA'ları",
+  "date": "11 Kasım",
+  "title": "Shield AI: Hivemind ile birden fazla CCA ilk kez kol uçuşu ve görüş ötesi hava muharebesi manevrası yaptı",
+  "text": "Shield AI, Hivemind otonomi yazılımıyla ABD Hava Kuvvetleri'ne ait birden fazla işbirlikçi savaş uçağının (CCA) 26 Ekim'de çok uçaklı kol uçuşu yaptığını ve görüş ötesi (BVR) karşı hava taktiklerini birlikte uyguladığını 9 Kasım'da duyurdu. Bundan yaklaşık üç hafta önce, 8 Ekim'de bir F-22 pilotu uçuştaki bir FQ-44A'yı yönlendirmişti. Şirket gösterime kaç uçağın katıldığını açıklamadı; açıklama şirket kaynaklı, kamuya açık hükümet test verisi yok.",
+  "src": [
+   [
+    "AIAA / Defense News",
+    "https://aiaa.org/2026/11/11/air-force-collaborative-combat-aircraft-demonstrate-formation-flight-and-combat-maneuvers/"
+   ],
+   [
+    "Defense Tech Intelligence Brief (12 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-3ca"
+   ]
+  ]
+ },
+ {
+  "cat": "Savunma Pazarı",
+  "sub": "Sadık kanat ve savaş İHA'ları",
+  "date": "12 Kasım",
+  "title": "Kraliyet Donanması ile Northrop Grumman, Talon'un 2027'de uçak gemisinden uçurulması için niyet beyanı imzaladı",
+  "text": "Birinci Deniz Lordu Gwyn Jenkins'in 10 Kasım'da duyurduğu niyet beyanı 12 Kasım'da HMS Prince of Wales'te imzalandı. Project VANQUISH kapsamındaki gösterim 2027'de İngiliz sularında yapılacak ve uçak gemisinden kalkışı içerecek. Kaynaklar uçağın kimliği konusunda farklı: bazı yayınlar YFQ-48A Talon Blue, USNI ise insanlı Talon IQ test platformu diyor; geminin üzerine iniş yapılıp yapılmayacağı belirsiz.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (13 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-118"
+   ]
+  ]
+ },
+ {
+  "cat": "Savunma Pazarı",
+  "sub": "Üretim hacmi",
+  "date": "12 Kasım",
+  "title": "ABD Ordusu küçük taarruz İHA'larını stoklamak yerine sarf malzemesi gibi yeniden satın alacak",
+  "text": "Ordu Malzeme Komutanlığı'ndan Jon Strzelec'e göre Ordu, Grup 1 küçük İHA'larda bakım ve stok yerine yenisini alma modeline geçiyor. Ekim ayındaki görüşme sırasında Drone Dominance Gauntlet 1 kapsamındaki ilk 30.000 İHA'nın 10.000'i teslim alınıyordu; Drone Dominance iki yılda yaklaşık 1 milyar dolar harcamayı öngörüyor. Replicator'ın yerini alan Defense Autonomous Warfare Group (DAWG) için yaklaşık 55 milyar dolarlık daha geniş bir plan bulunuyor. Grup 2 (21–55 libre) İHA'ların daha uzun süre idame edilmesi bekleniyor.",
+  "detay": [
+   "Ordu, FY2027 sonuna kadar 50.000 fırçasız motor hedefi veriyor; Tobyhanna Ordu Deposu'nda 30 Haziran'da hat açıldı",
+   "Strzelec'e göre Rusya yeni bir İHA'ya karşı önlemi 72 saat içinde üretebiliyor"
+  ],
+  "src": [
+   [
+    "Breaking Defense",
+    "https://breakingdefense.com/2026/11/instead-of-stockpiling-small-attack-drones-army-looking-to-simply-buy-new-ones/"
+   ],
+   [
+    "Defense Tech Intelligence Brief (13 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-118"
+   ]
+  ]
+ },
+ {
+  "cat": "Savunma Pazarı",
+  "sub": "Üretim hacmi",
+  "date": "10 Kasım",
+  "title": "Lockheed Martin 100.000'inci GMLRS roketini teslim etti; yıllık üretim yaklaşık 14.000'e çıktı",
+  "text": "Lockheed Martin, Camden (Arkansas) tesisinde 100.000'inci GMLRS roketini teslim ettiğini ve yıllık yaklaşık 14.000 roket üretim hızına planlanandan önce ulaştığını açıkladı. General Dynamics OTS ile geliştirilen yeni katı yakıtlı roket motoru ilk testini tamamladı; motor yeterliliği 2027'de alınacak ve kilit bileşen için üçüncü yerli kaynak oluşacak. Programda 35 eyaletten 200'ü aşkın tedarikçi var; Camden tesisi GMLRS, PAC-3 MSE ve PrSM için istihdamı %50 artırıyor.",
+  "src": [
+   [
+    "Lockheed Martin",
+    "https://investors.lockheedmartin.com/news-releases/news-release-details/more-rockets-faster-lockheed-martin-reaches-major-gmlrs"
+   ]
+  ]
+ },
+ {
+  "cat": "Savunma Pazarı",
+  "sub": "Üretim hacmi",
+  "date": "2 Kasım",
+  "title": "Pentagon, Utah merkezli Vector'u Drone Dominance II. fazında 5.000'e kadar İHA siparişi için seçti",
+  "text": "Vector, Gauntlet II uçuş yarışmasının yakın muharebe kategorisinde ilk beşe girerek 5.000'e kadar insansız sistemlik II. faz siparişi aldı. Siparişler iki görev kategorisinde toplam 60.000 sistemlik tahsisin parçası. Program 2027 sonuna kadar yaklaşık 250.000 İHA'yı, dört fazda yaklaşık 1,1 milyar dolarla hedefliyor; I. fazda 11 şirkete tanesi yaklaşık 5.000 dolardan 30.000 tek yönlü taarruz İHA'sı için yaklaşık 150 milyon dolar verilmişti.",
+  "src": [
+   [
+    "Utah Business",
+    "https://www.utahbusiness.com/industry/2026/11/02/pentagon-selects-bluffdale-based-vector-for-up-to-5000-drones/"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "ABD",
+  "date": "13 Kasım",
+  "title": "B-21 Raider, Edwards'taki silah bırakma testinin ardından doğrulanmış silah platformu ilan edildi",
+  "text": "ABD Hava Kuvvetleri, B-21'in bir önceki hafta Edwards Hava Üssü'nde gerçekleştirdiği ve konvansiyonel bir mühimmatın bırakıldığı testin ardından uçağı doğrulanmış silah platformu ilan etti; kullanılan silah açıklanmadı. Program, gelecek yıl Ellsworth Hava Üssü'nde uçak bulundurma takviminde ilerliyor. Northrop Grumman Layton'da (Utah) 265.000 metrekarelik bir üretim tesisini açtı ve Palmdale'deki Plant 42'de bir milyon metrekarelik ek nihai montaj alanı inşa ediyor.",
+  "src": [
+   [
+    "DefenseScoop",
+    "https://defensescoop.com/2026/11/13/air-force-b-21-raider-weapons-release-test/"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "İsrail",
+  "date": "6 Kasım",
+  "title": "Elbit Systems, Kanadalı ISE'yi satın almasının ardından insansız sualtı araç portföyünü ilk kez sergiledi",
+  "text": "Elbit, 20 Ekim'de bedeli açıklanmadan satın aldığı International Submarine Engineering'in (ISE) ürünlerini Paris'teki Euronaval 2026'da ilk kez sergiledi. ISE Explorer otonom sualtı aracının 6.000 m derinlik sınıfı, 600 km menzili ve 115 saat dayanıklılığı bulunuyor. 12 metrelik Seagull insansız su üstü aracı 96 saatten fazla görev yapabiliyor. ISE bugüne kadar 20'den fazla ülkeye 250'yi aşkın araç teslim etti.",
+  "detay": [
+   "Explorer: 4,5–7,5 m boy, 620–1.700 kg ağırlık, 24–139 kWh batarya; 1.000 ve 3.000 m sürümleri de var",
+   "Tek görev istasyonu iki Seagull'u aynı anda kontrol edebiliyor"
+  ],
+  "src": [
+   [
+    "Army Recognition",
+    "https://www.armyrecognition.com/news/navy-news/2026/elbit-systems-presents-underwater-drones-for-first-time-to-expand-deep-sea-reconnaissance-capabilities"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "İsrail",
+  "date": "2 Kasım",
+  "title": "Elbit, İsrail topçusu için 15 yıllık ve yaklaşık 170 milyon dolarlık eğitim ve simülasyon merkezi sözleşmesi aldı",
+  "text": "İsrail Savunma Bakanlığı'nın verdiği sözleşme kapsamında Elbit, topçu birlikleri için ileri bir eğitim ve simülasyon merkezi kuracak ve 15 yıl işletecek. Merkez, ROEM (SIGMA) kundağı motorlu obüs ve LAHAV (PULS) roketatar sistemlerinin entegrasyonunu destekleyecek. Elbit görev ve sürüş simülatörleri, derslikler ile eğitim, bakım ve destek hizmetleri sağlayacak.",
+  "src": [
+   [
+    "PR Newswire – Elbit Systems",
+    "https://www.prnewswire.com/il/news-releases/elbit-systems-awarded-approximately-170-million-contract-to-establish-and-operate-an-advanced-training-and-simulation-center-for-the-idf-artillery-corps-302926105.html"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "Avrupa",
+  "date": "9 Kasım",
+  "title": "Rheinmetall, Belçika'ya 20 Skyranger 30 hava savunma sistemi tedarik edecek",
+  "text": "Rheinmetall, Belçika ile kanca kaldırmalı platformlara monte 20 adet Skyranger 30 (30 mm) sistemi için sözleşme imzaladı; lojistik dahil bedel orta üç haneli milyon avro düzeyinde. Sistemler bölge ve kritik altyapının sabit korunmasında kullanılacak ve Belçika'nın Blue Dome komuta-kontrol mimarisine entegre edilecek. Teslimatlar 2028 sonunda başlayacak; görüşmeler Haziran 2025'te başlamış ve sözleşme süreci 1,5 yıldan kısa sürmüş.",
+  "src": [
+   [
+    "Rheinmetall",
+    "https://www.rheinmetall.com/en/media/news-watch/news/2026/11/2026-11-09-rheinmetall-strengthens-belgian-air-defence"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "Avrupa",
+  "date": "9 Kasım",
+  "title": "Saab, İsveç'in dört FDI fırkateyni için yaklaşık 2 milyar kronluk silah ve sensör siparişi aldı",
+  "text": "Saab, Naval Group ile İsveç için inşa edilecek dört FDI fırkateynine silah kontrol sistemleri ve sensörlerin teslimi ve entegrasyonu için yaklaşık 2 milyar İsveç kronluk sözleşme imzaladı. Teslimatlar 2027–2034 arasında yapılacak.",
+  "detay": [
+   "Kapsam: Ceros atış kontrol direktörü, EOS 500, RBS15 gemisavar füzesi, Saab hafif torpidosu, Trackfire uzaktan kumandalı silah istasyonu ve Sea Giraffe 1X radarı"
+  ],
+  "src": [
+   [
+    "Asia Pacific Defence Reporter",
+    "https://asiapacificdefencereporter.com/posts/saab-wins-order-to-equip-swedens-new-frigates"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "Avrupa",
+  "date": "13 Kasım",
+  "title": "Avrupa Savunma Fonu ileri algılama alanında 300 milyon avroyu aştı; hipersonik süzülme araçlarına karşı 68 milyon avro",
+  "text": "Avrupa Komisyonu'nun 13 Kasım'da yayımladığı bilgi notuna göre Avrupa Savunma Fonu (EDF), ileri algılama alanındaki ortak Ar-Ge'ye 300 milyon avrodan fazla yatırım yaptı. 2026 çalışma programında hipersonik süzülme araçlarına karşı araştırmalara 68 milyon avro ayrıldı. TALOS, TALOS-TWO ve LACE lazer projeleri 2027'ye kadar yönlendirilmiş enerji silahı prototipi hedefliyor.",
+  "detay": [
+   "EDF'nin 2021–2027 bütçesi yaklaşık 7,3 milyar avro: 2,7 milyar avro ortak araştırma, 5,3 milyar avro ortak kabiliyet geliştirme",
+   "Hibeler uygun maliyetlerin %100'üne kadar çıkabiliyor"
+  ],
+  "src": [
+   [
+    "Avrupa Komisyonu DG DEFIS",
+    "https://defence-industry-space.ec.europa.eu/advanced-sensors-next-generation-communications-how-european-defence-fund-helps-european-defence-2026-11-13_en"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "Asya",
+  "date": "10 Kasım",
+  "title": "Japonya, Filipinler'e 4,3 milyar yenlik hibeyle kıyı radarı ve gözetleme İHA'ları verecek",
+  "text": "Japonya ile Filipinler 9 Kasım'da Manila'da, kıyı radar sistemi ve gözetleme İHA'larını kapsayan 4,3 milyar yenlik (yaklaşık 24 milyon avro) hibe anlaşması imzaladı. Radar Filipin Deniz Kuvvetleri'ne, İHA'lar Hava Kuvvetleri'ne verilecek. Tokyo'ya göre bu, Resmî Güvenlik Yardımı (OSA) programı kapsamında sağlanan ilk eksiksiz savunma sistemi olacak; Japonya Şubat'ta 2023 hibesiyle beş kıyı radarı teslim etmişti.",
+  "src": [
+   [
+    "Euronews",
+    "https://www.euronews.com/2026/11/10/japan-to-supply-philippine-military-with-coastal-radar-and-drones"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "Asya",
+  "date": "13 Kasım",
+  "title": "Hindistan DRDO, 30 kg sınıfı katlanır kanatlı İHA için tüpten fırlatma sistemi ihalelerine çıktı",
+  "text": "DRDO'nun Haydarabad'daki Research Centre Imarat birimi, gaz kartuşlu tüp fırlatıcı ile 30 kg sınıfı katlanır kanatlı bir İHA için iki ihale yayımladı. 3 Kasım tarihli 2026_DRDO_797020_1 ihalesi tasarım (NRE), fırlatıcı ve gaz kartuşlarını; 2026_DRDO_797080_1 ise çizime göre üretilecek fırlatma tüpü montajını kapsıyor. İhalelerde İHA'nın amacı ve programı belirtilmiyor; benzer bir fırlatıcı ihtiyacı 8 Temmuz'da da yayımlanmıştı.",
+  "src": [
+   [
+    "IDRW",
+    "https://idrw.org/drdo-30kg-tube-launched-foldable-wing-uav-launcher/"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "Türkiye",
+  "date": "4 Kasım",
+  "title": "ASELSAN, uluslararası bir müşteriyle 1,1 milyar dolarlık hava savunma ihracat sözleşmesi imzaladı",
+  "text": "ASELSAN, 3 Kasım'da KAP'a yaptığı bildirimde adı açıklanmayan uluslararası bir müşteriyle 1,1 milyar dolarlık hava savunma sistemleri ihracat sözleşmesi imzaladığını duyurdu. Şirketin ilk dokuz ayda aldığı yeni ihracat sözleşmeleri %34 artışla 1,9 milyar dolara, toplam yeni iş 14 milyar dolara ulaştı ve sipariş birikimi ilk kez 30 milyar doları aştı. Dokuz aylık gelir %28 artışla 151,5 milyar TL oldu; yurt dışı satışların gelir içindeki payı %9,4'ten %17,7'ye çıktı.",
+  "detay": [
+   "Ekim ayında ayrıca 442,5 milyon dolarlık (radar, İHA karşıtı sistem, komuta-kontrol) ve 488,5 milyon avroluk (hava savunma) iki ihracat sözleşmesi imzalandı",
+   "AA'ya göre bu yılki yeni ihracat hacmi yaklaşık 4,3 milyar dolar"
+  ],
+  "tr": true,
+  "src": [
+   [
+    "Foreks / AA",
+    "https://www.foreks.com/haber/detay/6aeaf37d4b1852391445b374/AA/tr/hava-savunma-aselsan-i-yeni-ihracat-rekoruna-tasidi-04-11-26/"
+   ],
+   [
+    "Alomaliye",
+    "https://www.alomaliye.com/2026/11/03/aselsandan-1-1-milyar-dolarlik-ihracat-imzasi/"
+   ]
+  ]
+ },
+ {
+  "cat": "Ülkeler",
+  "sub": "Türkiye",
+  "date": "12 Kasım",
+  "title": "Türkiye–Suudi Arabistan Savunma Sanayii Günleri'nde 69 Türk ve 30 Suudi firma 601 ikili görüşme yaptı",
+  "text": "11–12 Kasım'da İstanbul'da düzenlenen etkinlikte Suudi Arabistan Sanayi Bakanı ve GAMI Başkanı ilk gün Otokar, Roketsan, STM ve HAVELSAN, ikinci gün TUSAŞ, MKE ve SAHA İstanbul yöneticileriyle görüştü. İki günde 69 Türk ve 30 Suudi firma arasında 601 B2B görüşme yapıldı. SSB Başkanı Haluk Görgün, Türk savunma sektöründe yaklaşık 4.500 KOBİ, 1.400'ü aşkın proje ve yaklaşık 120 milyar dolarlık proje portföyü bulunduğunu belirtti.",
+  "detay": [
+   "Görgün, son 3,5 yılda Suudi Arabistan ile 75 toplantı yapıldığını söyledi",
+   "Vizyon 2030 kapsamında üretimin en az %50'sinin Suudi Arabistan'da yapılması hedefleniyor"
+  ],
+  "tr": true,
+  "src": [
+   [
+    "SavunmaSanayi.org",
+    "https://savunmasanayi.org/2026/11/12/turkiye-suudi-arabistan-savunma-sanayii-gunleri-istanbulda-yapildi/"
+   ]
+  ]
+ },
+ {
+  "cat": "İhracat & Düzenleme",
+  "sub": "İhaleler ve fonlar",
+  "date": "6 Kasım",
+  "title": "NATO, beş şirketten 16 sistemle İHA karşıtı çözüm pazar yeri açtı",
+  "text": "NATO Haberleşme ve Bilgi Ajansı (NCIA), 5 Kasım'da Alta Ares, Axon Enterprise, Northrop Grumman, OSL UK ve Quantum Systems'tan önceden seçilmiş 16 çözümden oluşan İHA karşıtı pazar yerini başlattı. Teklifler 3 km çaplı alan koruması, 20 km'lik sınır hattı, 50 km/s'ye kadar hızla giden 300 m'lik konvoy ve nokta koruması senaryolarında değerlendirildi. Çerçeve sözleşmeler imzadan itibaren 18 ay geçerli ve uzatılabilir; ek testler için 3,1 milyon avro ayrıldı. Alta Ares 16 lotun altısını kazandığını açıkladı.",
+  "detay": [
+   "Pazar yeri, 7 Temmuz 2026'da başlatılan ve müttefiklerin beş yılda 40 milyar doları aşan taahhütte bulunduğu Drone Edge girişiminin parçası"
+  ],
+  "src": [
+   [
+    "AeroTime",
+    "https://www.aerotime.aero/articles/nato-counter-drone-marketplace-16-systems"
+   ]
+  ]
+ },
+ {
+  "cat": "İhracat & Düzenleme",
+  "sub": "İhaleler ve fonlar",
+  "date": "20 Ekim",
+  "title": "DIU'nun hava savunma silahlı insansız su üstü aracı yarışmasında son başvuru 30 Kasım",
+  "text": "ABD Savunma Bakanlığı, DIU aracılığıyla hava tehditlerine karşı efektör taşıyan üretime hazır insansız su üstü araçları için 40 milyon dolara kadar ödül sunuyor. 12 aylık SWAP-USV ödül yarışmasının parçası olan çağrıda teklifler 30 Kasım 2026'ya kadar verilecek ve 120 gün içinde sahaya sürüm hedefleniyor. Araçların en az 200 deniz mili menzil ve 10 knot üzeri seyir hızı sağlaması gerekiyor; 2027 başında Little Creek'te üç haftalık değerlendirme planlanıyor.",
+  "src": [
+   [
+    "Baird Maritime",
+    "https://www.bairdmaritime.com/security/naval/unmanned-naval-systems/counter-air-drone-boats-challenge"
+   ]
+  ]
+ },
+ {
+  "cat": "İhracat & Düzenleme",
+  "sub": "İhaleler ve fonlar",
+  "date": "11 Kasım",
+  "title": "ABD Hava Kuvvetleri, 2029 sonu için beş cislunar uyduya yönelik bilgi talebi yayımladı",
+  "text": "Hava Kuvvetleri, 2029 sonundaki bir görev ihtiyacı için en fazla beş uydudan oluşan bir Cislunar Uzay Sistemi'ne ilişkin bilgi talebini (RFI) 2–3 Kasım'da SAM.gov'da yayımladı. Yanıtlar 24 Kasım öğlene kadar verilecek; hükümet en fazla beş sabit fiyatlı ön tasarım çalışması sözleşmesi vermeyi planlıyor. Paralel bir cislunar otonomi RFI'sında sorular 21 Kasım'a, yanıtlar 4 Aralık'a kadar alınıyor.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (12 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-3ca"
+   ]
+  ]
+ },
+ {
+  "cat": "İhracat & Düzenleme",
+  "sub": "İhracat kontrolleri",
+  "date": "6 Kasım",
+  "title": "ABD'nin İHA ihracat ve tedarik kuralları: BIS ve FCC düzenlemelerinin özeti",
+  "text": "Morrison Foerster'in 6 Kasım tarihli değerlendirmesine göre BIS'in 14 Ağustos 2026 tarihli nihai kuralı, ulusal güvenlik kontrolündeki dayanıklılık eşiğini 30 dakikadan üç saate çıkardı ve 500 kg faydalı yükü 300 km'ye taşıyamayan 9A610 İHA'lar için STA lisans istisnasını A:5 ülke grubuna genişletti. FCC Aralık 2025'te yabancı üretim İHA'ları ve kritik bileşenleri Covered List'e eklemişti ve sekiz İHA şirketine ceza önerdi. Blue UAS ve yerli nihai ürün muafiyetleri 1 Ocak 2028'de sona erecek.",
+  "src": [
+   [
+    "Morrison Foerster",
+    "https://www.mofo.com/resources/insights/261106-unleashing-american-drone-dominance-impact"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "Otonomi ve sürü",
+  "date": "13 Kasım",
+  "title": "ABD Ordusu Almanya'da insansız kara aracından fırlatılan İHA'larla otonom canlı atış gösterimi yaptı",
+  "text": "12 Kasım'da Grafenwöhr Eğitim Sahası'ndaki gösterimde TRV-150 İHA'sı hedefe sis bıraktı, ardından R3NEGADE insansız kara aracı üzerindeki HIV3 fırlatıcıdan atılan İHA'lar hedefi otonom olarak vurdu. 173. Hava İndirme Tugayı askerleri ayrıca bir FPV İHA ile ayrı bir vuruş gerçekleştirdi. Gösterimi CCDC Armaments Center, ABD Ordusu Avrupa ve Afrika ve 7. Ordu Eğitim Komutanlığı ile birlikte yürüttü; ekip İHA'ları uzaktan konuşlandırma için konteynerlerde depoluyor.",
+  "src": [
+   [
+    "Defence Industry Europe",
+    "https://defence-industry.eu/u-s-army-launches-drones-from-an-unmanned-ground-vehicle-in-live-fire-test-in-germany/"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "İHA karşıtı sistemler",
+  "date": "12 Kasım",
+  "title": "JIATF-401, iç ve dış İHA tehdit değerlendirmeleri için istihbarat topluluğundan destek istedi",
+  "text": "Pentagon liderliğindeki İHA karşıtı ortak görev gücü JIATF-401'in direktörü Tuğgeneral Matt Ross, istihbarat topluluğundan yurt içi ve yurt dışı için yetkili tehdit değerlendirmeleri talep ettiklerini söyledi. Savunma, Ulaştırma, İç Güvenlik, Enerji ve Adalet bakanlıkları yeni bir mutabakat zaptı imzaladı; metni kamuya açık değil. FAA'dan Liam McKenna'ya göre ileride kurumlar arası onaylı teknoloji listesi oluşturulacak ve bir kurumca incelenen sistem çoğu durumda 24 saat içinde diğerine onaylanabilecek.",
+  "src": [
+   [
+    "DefenseScoop",
+    "https://defensescoop.com/2026/11/12/counter-drone-task-force-intelligence-community-threat-assessments/"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "İHA karşıtı sistemler",
+  "date": "14 Kasım",
+  "title": "ABD Ordusu Avrupa'da FD-1 önleyici İHA'yı Polonya'da değerlendirdi",
+  "text": "ABD Ordusu Avrupa ve Afrika'nın tümen hava savunma taburu, Kasım başında Polonya'daki Ustka Eğitim Sahası'nda Operation Audacious Fury kapsamında FD-1 önleyicinin İHA karşıtı kabiliyetini değerlendirdi. 52. Hava Savunma Topçu Tugayı'na bağlı 5-4 ADAR'ın TIE bataryası, Grup 1–3 ve sürü halindeki İHA tehditlerine karşı alt katmanda kinetik derinlik sağlamayı hedefliyor. Birlik, acemi askerlerin FPV önleyici uçurması için taktik ve sertifikasyon sistemi geliştirdi; maliyet ve performans rakamı paylaşılmadı.",
+  "src": [
+   [
+    "Soldier Systems Daily",
+    "https://soldiersystems.net/2026/11/14/us-army-air-defenders-assess-drone-interceptor/"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "İHA karşıtı sistemler",
+  "date": "13 Kasım",
+  "title": "ABD İç Güvenlik Bakanlığı 2028 Los Angeles Olimpiyatları için İHA karşıtı hazırlıkları hızlandırıyor",
+  "text": "DHS, 15.000'i aşkın sporcunun katılacağı 2028 Olimpiyatları için güvenlik planlamasında İHA karşıtı teknolojiye ağırlık veriyor. Bakanlık Ağustos'ta 1,5 milyar dolarlık İHA karşıtı programı başlattı; Anduril, Booz Allen ve GDIT ödül alanlar arasında. 2027 mali yılında eyalet ve yerel yönetimlerin İHA tespit ve etkisizleştirme kabiliyeti için yaklaşık 250 milyon dolar planlanıyor; Bakan Mullin, DHS'nin kullandığı bir tek yönlü taarruz İHA'sının üretim maliyetini 40.000 dolar olarak verdi.",
+  "src": [
+   [
+    "FedScoop",
+    "https://fedscoop.com/dhs-drone-counter-uas-olympics/"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "FPV ve elektronik harp",
+  "date": "12 Kasım",
+  "title": "DARPA, elektronik destek sensörleri için gizli BEAMERS programına çağrı yaptı",
+  "text": "DARPA, DARPA-PS-27-05 numaralı BEAMERS çağrısını 10 Kasım'da SAM.gov'da yayımladı. Gizlilik dereceli, iki fazlı program için birden fazla Other Transaction prototip anlaşması öngörülüyor; Aviation Week'e göre hedef 1–110 GHz aralığı, ancak kamuya açık metinde frekans yok. Gizli ek talebi için son tarih 24 Kasım, tam teklifler için 8 Ocak 2027.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (13 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-118"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "İnsansız deniz ve kara araçları",
+  "date": "10 Kasım",
+  "title": "İngiltere, sualtı kablolarını korumak için Ocean Infinity ile 90 milyon sterlinlik İHA ve sensör çerçevesi kurdu",
+  "text": "İngiltere, Kraliyet Donanması için insansız araçlar, sensörler ve yapay zekâya yönelik 90 milyon sterlinlik Atlantic Net çerçevesini Ocean Infinity Solutions ile duyurdu. Çerçeve, Atlantic Bastion programının ilk aşaması; Birinci Deniz Lordu'na göre aylar içinde operasyonel olacak ve yaklaşık 200 nitelikli işi destekleyecek.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (12 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-3ca"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "İnsansız deniz ve kara araçları",
+  "date": "11 Kasım",
+  "title": "NATO, Arktik'te buz ve su üzerinde çalışan amfibik insansız kara araçlarını test ediyor",
+  "text": "NATO'nun deniz araştırma merkezi CMRE, insanlı amfibik araçları insansız hale getirerek İHA ve sualtı araçları arasında bağlantı kuran devriye araçlarına dönüştürdü. Müttefik Dönüşüm Komutanlığı'nın Haziran 2026'da başlattığı Task Force X-Arctic, Eylül'deki REPMUS 26 tatbikatında ölçeklendi; nihai gösterim 2027 yazında yapılacak. NATO üç tip insansız kara aracıyla çalışıyor, bunlardan biri amfibik.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (12 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-3ca"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "Uzay ve uydu",
+  "date": "11 Kasım",
+  "title": "Viasat, Uzay Kuvvetleri'nin Space Data Network omurgası için 450 milyon dolar tavanlı görev merkezi sözleşmesi aldı",
+  "text": "Uzay Sistemleri Komutanlığı, Space Data Network (SDN) omurgası için görev operasyon merkezinin tasarımı, kurulumu ve ölçeklenmesi amacıyla Viasat'a 450 milyon dolar tavanlı IDIQ sözleşmesi verdi; ilk iş emri 115 milyon dolar. Programın temel ödülü Mayıs'ta SpaceX'e verilen ve 2027 sonuna kadar tam operasyonel prototip isteyen 2,29 milyar dolarlık OTA. Uzay Kuvvetleri SDN omurgası için FY2027 uzlaşı paketinde yaklaşık 1,5 milyar dolar talep etti.",
+  "src": [
+   [
+    "Trade and Industry Development",
+    "https://www.tradeandindustrydev.com/industry/aerospace-defense/news/viasat-wins-450m-space-force-contract-build-sdn-36602.md"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "Uzay ve uydu",
+  "date": "13 Kasım",
+  "title": "AFRL'nin Oracle-M cislunar gözetleme uydusu Vulcan gecikmesi nedeniyle Falcon Heavy'ye aktarıldı",
+  "text": "AFRL'nin Dünya–Ay L1 noktası yakınında çalışacak Oracle-M öncü uydusu, 2027 ortasında SpaceX Falcon Heavy ile USSF-63 görevinde fırlatılacak. Değişikliğin nedeni, 12 Şubat'taki USSF-87 fırlatmasında yaşanan katı yakıtlı yardımcı roket anomalisi sonrası Vulcan'ın dokuz ay yere indirilmesi. Ars Technica programın değerini 75 milyon dolar olarak verdi; devam uydusu Oracle-Prime Blue Canyon Technologies platformu kullanacak.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (13 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-118"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "Batarya ve itki",
+  "date": "12 Kasım",
+  "title": "AFRL, Ursa Major'ün depolanabilir sıvı yakıtlı hipersonik motoru Draper için 10,9 milyon dolarlık opsiyonu kullandı",
+  "text": "Ursa Major, Affordable Rapid Missile Demonstrator uçuşlarının ardından AFRL'nin Draper motoru için 10,9 milyon dolarlık sözleşme opsiyonlarını kullandığını 12 Kasım'da açıkladı. Şirkete göre Draper, hidrojen peroksit ve kerosen kullanan, 4.000 libre itkili, kapalı katalizör çevrimli, yeniden kullanılabilir ve kısılabilir bir motor; üretim Berthoud'da (Colorado) yapılıyor.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (13 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-118"
+   ]
+  ]
+ },
+ {
+  "cat": "Teknoloji",
+  "sub": "Batarya ve itki",
+  "date": "9 Kasım",
+  "title": "Electra Defense, hibrit-elektrikli EL9 kısa pist uçağının testleri için AFRL'den 4,7 milyon dolar aldı",
+  "text": "Electra Defense, dokuz yolcu kapasiteli hibrit-elektrikli EL9 Ultra STOL uçağının yer ve uçuş testleri için AFRL'den 4,7 milyon dolarlık sözleşme aldı. Bu, 2023'te verilen 85 milyon dolar tavanlı Strategic Funding Increase ödülünün ve 2025'teki Future Flag 25-3 katılımının devamı; sözleşme alım değil test kapsamında.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (12 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-3ca"
+   ]
+  ]
+ },
+ {
+  "cat": "Tedarik & Hammadde",
+  "sub": "Çin ihracat kontrolleri",
+  "date": "11 Kasım 2025",
+  "title": "Çin'in ABD'ye galyum, germanyum ve antimon ihracat yasağındaki askı 27 Kasım'da doluyor",
+  "text": "Çin Ticaret Bakanlığı Kasım 2025'te, Aralık 2024'te getirilen galyum, germanyum, antimon ve süper sert malzeme ihracat yasağının ABD'ye yönelik kısmını 27 Kasım 2026'ya kadar askıya almıştı. Askı, ABD askeri kullanıcılarına çift kullanımlı ürün ihracatına yönelik doğrudan yasağı kapsamıyordu. Bu çalışmada okunan kaynaklarda askının uzatıldığına dair bir duyuru bulunmuyor.",
+  "src": [
+   [
+    "Fastmarkets",
+    "https://www.fastmarkets.com/insights/china-suspends-export-prohibition-on-superhard-materials-us/"
+   ]
+  ]
+ },
+ {
+  "cat": "Tedarik & Hammadde",
+  "sub": "Nadir toprak elementleri",
+  "date": "11 Kasım",
+  "title": "USA Rare Earth'ün üçüncü çeyrek geliri 3 milyon dolarda kaldı; şirket disprozyum ve samaryum kıtlığını gösterdi",
+  "text": "USA Rare Earth'ün üçüncü çeyrek geliri 3 milyon dolarla yaklaşık 13,5 milyon dolarlık beklentinin altında kaldı; düzeltilmiş hisse başı zarar 0,44 dolar oldu. Yönetim sonucu, Çin'in ihracat kısıtlamalarıyla bağlantılı disprozyum oksit ve samaryum metal kıtlığına bağladı. Brezilya'daki Serra Verde'den sevkiyatlar Ekim'de başladı; dördüncü çeyrekte en az 325 ton toplam nadir toprak oksidi bekleniyor ve sepet fiyatı çeyrek başından bu yana kg başına ortalama yaklaşık 97 dolar (taban yaklaşık 43 dolar).",
+  "detay": [
+   "Niyet mektupları ve mutabakatlar yaklaşık 2.500 ton mıknatısı kapsıyor; müşteri yeterlilik süreci 6–9 aydan 2 yıla kadar sürebiliyor",
+   "Şirket çeyreği yaklaşık 1,2 milyar dolar nakitle kapattı"
+  ],
+  "src": [
+   [
+    "24/7 Wall St.",
+    "https://247wallst.com/investing/2026/11/11/usa-rare-earth-jumps-11-as-it-rebounds-from-post-earnings-sell-off-mp-materials-climbs-4-united-states-antimony-edges-higher/"
+   ]
+  ]
+ },
+ {
+  "cat": "Tedarik & Hammadde",
+  "sub": "Kritik mineraller",
+  "date": "4 Kasım",
+  "title": "Rotterdam'da tungsten (APT) fiyatı Çin iç piyasasının 3,74 katına çıktı",
+  "text": "MetalMiner verilerine göre Ekim 2026'da Rotterdam'da amonyum paratungstat (APT) kg başına 278,22 dolardan işlem görürken Çin fabrika çıkış fiyatı 74,43 dolarda kaldı; aradaki fark 3,74 kat (Eylül 2021–Haziran 2025 ortalaması 1,24 kat). Mart–Eylül 2026 arasında Çin APT fiyatı %58 düşerken Rotterdam fiyatı %39 yükseldi. ABD'nin tungsten tarifesi 2015–2024'teki yaklaşık %4'ten Aralık 2025'te %16,2'ye çıktı; DFARS tedarik kısıtlaması 1 Ocak 2027'de yürürlüğe giriyor.",
+  "src": [
+   [
+    "Canadian Mining Journal",
+    "https://www.canadianminingjournal.com/news/western-tungsten-prices-nearly-quadruple-chinas-report/"
+   ]
+  ]
+ },
+ {
+  "cat": "Tedarik & Hammadde",
+  "sub": "Kompozit ve karbon fiber",
+  "date": "9 Kasım",
+  "title": "Superior Huntingdon Composites, 2012'den beri atıl üçüncü üretim hattını 4,4 milyon dolarla yeniden açıyor",
+  "text": "Pennsylvania'daki Superior Huntingdon Composites, Huntingdon tesisinde 2012'den beri kullanılmayan üçüncü üretim hattını 4,4 milyon dolarlık yatırımla yeniden devreye alıyor. Finansmanda 1.687.757 dolarlık eyalet IDA kredisi ve 200.000 dolarlık Pennsylvania First hibesi kullanılıyor. Şirketin cam elyaf keçe ve tül ürünleri savunma dahil çeşitli pazarlara gidiyor.",
+  "detay": [
+   "ICS 2026 (1–2 Aralık, Londra) kapsamında 1 Aralık'ta NCC moderatörlüğünde “Savunma kompozitleri: kabiliyet ve tedarik zinciri açıkları” çalıştayı yapılacak; başvurular 25 Kasım'da kapanıyor"
+  ],
+  "src": [
+   [
+    "CompositesWorld",
+    "https://www.compositesworld.com/rss/news"
+   ]
+  ]
+ },
+ {
+  "cat": "Tedarik & Hammadde",
+  "sub": "Alternatif tedarik ve çip",
+  "date": "12 Kasım",
+  "title": "ABD Ordusu küçük İHA'lar için 2027 sonuna kadar 50.000 fırçasız motoru kendi deposunda üretmeyi hedefliyor",
+  "text": "ABD Ordusu, Grup 1 İHA'lar için Tobyhanna Ordu Deposu'nda 30 Haziran'da açılan hatla 2027 mali yılı sonuna kadar 50.000 fırçasız motor üretmeyi hedefliyor. Hamle, küçük İHA'ları stoklamak yerine sürekli yenisini alma modeline geçişle birlikte ele alınıyor ve kritik bileşenlerde yurt içi kaynak oluşturmayı amaçlıyor.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (13 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-118"
+   ],
+   [
+    "Breaking Defense",
+    "https://breakingdefense.com/2026/11/instead-of-stockpiling-small-attack-drones-army-looking-to-simply-buy-new-ones/"
+   ]
+  ]
+ },
+ {
+  "cat": "Tedarik & Hammadde",
+  "sub": "Eklemeli imalat",
+  "date": "11 Kasım",
+  "title": "America Makes, uzay itki sistemlerinde eklemeli imalat yol haritasını yayımladı",
+  "text": "America Makes, AFRL destekli işbirliği anlaşması kapsamında “Advancing AM for Space Propulsion” raporunu 11 Kasım'da yayımladı; rapor 50'yi aşkın kurumun çalışmasını bir araya getiriyor. Kurum, eklemeli parça performans yeterliliği için 52 milyon dolarlık ve YZ ile malzeme izin değerleri için 5,7 milyon dolarlık iki çağrı planlıyor; henüz açık çağrı yok.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (12 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-3ca"
+   ]
+  ]
+ },
+ {
+  "cat": "Yatırım",
+  "sub": "Fonlama ve değerleme",
+  "date": "12 Kasım",
+  "title": "UForce, 6 milyar dolar değerlemeyle 700 milyon dolar topladı",
+  "text": "Merkezi Londra'da, merkezleri Kiev ve Washington'da bulunan UForce, Valor Equity Partners ile İngiltere Ulusal Varlık Fonu'nun ortak liderliğindeki A serisi turda 6 milyar dolar değerlemeyle 700 milyon dolar topladı; ABD–Ukrayna Yeniden Yapılanma Yatırım Fonu da katıldı. Kaynak, MAGURA insansız su üstü aracı, NEMESIS hava İHA'ları, LIUT insansız kara aracı ve PREDATOR taretlerinin Ar-Ge ve üretimine gidecek. Şirket Mart'ta 1 milyar dolar değerlemeyle 50 milyon dolarlık tohum yatırımı almıştı.",
+  "detay": [
+   "Diğer yatırımcılar: Menlo Ventures, Shield Capital, Ballistic Ventures, Lakestar, Xantium, Hiro Capital",
+   "MAGURA üretimini ABD'de artırmak için ReconCraft ile ortaklık var; emekli Orgeneral Christopher Cavoli yönetim kuruluna katılıyor"
+  ],
+  "src": [
+   [
+    "Defence Industry Europe",
+    "https://defence-industry.eu/uforce-raises-700-million-at-a-6-billion-valuation-to-build-more-drones-in-ukraine-and-abroad/"
+   ],
+   [
+    "Global Banking & Finance Review",
+    "https://www.globalbankingandfinance.com/ukraine-founded-drone-startup-uforce-secures-700-million/"
+   ]
+  ]
+ },
+ {
+  "cat": "Yatırım",
+  "sub": "Fonlama ve değerleme",
+  "date": "6 Kasım",
+  "title": "Haftanın en büyük ABD turlarında savunma ve uzay öne çıktı: CesiumAstro 730, Northwood 375 milyon dolar",
+  "text": "Crunchbase'in 31 Ekim–6 Kasım haftası listesinde Shield AI'ın 2 milyar dolarlık finansmanı ve Zipline'ın 21,5 milyar dolar değerlemeyle 1,5 milyar dolarlık turunun ardından uzay şirketleri geldi. Uydu faz dizili anten üreticisi CesiumAstro 4,5 milyar doları aşan değerlemeyle 730 milyon dolarlık D serisi ve EXIM ile JP Morgan üzerinden 100 milyon dolar borç finansmanı aldı. Yer istasyonu şirketi Northwood Space 375 milyon dolarlık C serisi, elektrikli kamyon ve savunma odaklı Harbinger 240 milyon dolarlık D serisi topladı.",
+  "src": [
+   [
+    "Crunchbase News",
+    "https://news.crunchbase.com/venture/biggest-startup-rounds-ai-defense-space-tech-shield-zipline/"
+   ]
+  ]
+ },
+ {
+  "cat": "Enerji & Sağlık",
+  "sub": "Küçük modüler reaktörler",
+  "date": "10 Kasım",
+  "title": "X-energy, Dow'un Teksas tesisindeki dört Xe-100 reaktörü için NRC inşaat izni aldı",
+  "text": "ABD Nükleer Düzenleme Komisyonu, Dow'un Teksas'taki Long Mott sahasında her biri 80 MW elektrik ve 200 MW ısı gücünde dört Xe-100 reaktörü için inşaat izni verdi; reaktörlerin 2030'ların başında devreye girmesi bekleniyor. X-energy'nin üçüncü çeyrek geliri ve hibe geliri 66,3 milyon dolara (geçen yıl 30,4 milyon) çıktı; 30 Eylül itibarıyla toplam likiditesi 1,81 milyar dolar ve borcu yok. İkinci Xe-100 projesi için Fluor seçildi, AEP ile Indiana'da 960 MW'lık proje için ortak geliştirme anlaşması imzalandı.",
+  "src": [
+   [
+    "TechCrunch",
+    "https://techcrunch.com/2026/11/10/x-energy-gets-green-light-to-build-its-first-small-modular-nuclear-reactors/"
+   ],
+   [
+    "GlobeNewswire – X-energy",
+    "https://globenewswire.com/news-release/2026/11/12/3401332/0/en/x-energy-reports-third-quarter-2026-results.html"
+   ]
+  ]
+ },
+ {
+  "cat": "Enerji & Sağlık",
+  "sub": "Küçük modüler reaktörler",
+  "date": "6 Kasım",
+  "title": "NuScale, reaktör bileşenleri üretimi için Doosan Enerbility ile anlaştı",
+  "text": "NuScale, 29 Ekim'de kilit reaktör bileşenlerinin üretimi için Doosan Enerbility ile imalat anlaşması imzaladı. Her NuScale güç modülü 77 MWe'ye kadar, 12 modüllü santral 924 MWe güç üretebiliyor; nükleer sınıf basınç bileşenlerinin dövme ve işlenmesi beş yıla kadar sürebiliyor. Şirketin Romanya'da altı modüllü onaylı bir projesi var; ENTRA1/TVA çerçevesi 6 GW'a (72 modül) kadar kurulum öngörüyor.",
+  "src": [
+   [
+    "The Motley Fool",
+    "https://www.fool.com/investing/2026/11/06/not-oklo-not-x-energy-this-smr-stock-just-signed-a/"
+   ]
+  ]
+ },
+ {
+  "cat": "Enerji & Sağlık",
+  "sub": "Sağlık teknolojileri",
+  "date": "10 Kasım",
+  "title": "FDA, mesane tümörü rezeksiyonu için Virtuoso robotik endoskopi sistemine De Novo onayı verdi",
+  "text": "FDA, mesane lezyonlarının transüretral yoldan tek parça (en bloc) çıkarılması için geliştirilen Virtuoso Endoskopi Sistemi'ne De Novo onayı vererek yeni bir cihaz sınıfı oluşturdu. Sistem, rijit endoskopun ucunda iki minyatür eş merkezli nitinol kol kullanıyor. İlk insan çalışmasında 6 hastadaki 12 lezyonun tamamı tek parça çıkarıldı; ilk 20 hastalık genişletilmiş ara verilerde detrusor kası lezyonların %94'ünde mevcuttu (hedef %60). ABD'de odaklı lansman 2027'de planlanıyor.",
+  "src": [
+   [
+    "Urology Times",
+    "https://www.urologytimes.com/view/fda-grants-de-novo-authorization-virtuoso-robotic-system-bladder-tumor-resection"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "Gündem",
+  "date": "12 Kasım",
+  "title": "Google, 1 milyon token bağlamlı Gemini 4 Hydrogen modelini yayımladı",
+  "text": "Google'ın Gemini 4 Hydrogen modeli AI Studio, Gemini API, Gemini uygulaması ve Arama'da kullanıma sunuldu; API fiyatı milyon giriş token'ı için 1,50, çıkış için 7,50 dolar ve bağlam penceresi 1 milyon token. Artificial Analysis Intelligence Index'te 51 puan aldığı, Terminal-Bench 4.1'de %57 skor elde ettiği bildirildi. Cursor modeli aynı gün ekledi.",
+  "src": [
+   [
+    "Sam on AI",
+    "https://samonai.substack.com/p/ai-brief-november-13-2026"
+   ],
+   [
+    "AI Frontier Daily",
+    "https://kellyabbott1.substack.com/p/ai-frontier-daily-2026-11-13"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "Gündem",
+  "date": "12 Kasım",
+  "title": "ABD Hava Kuvvetleri yapay zekâyı 15 görev alanında sahaya sürmek için kurumsal plan açıkladı",
+  "text": "Hava Kuvvetleri Bakanlığı, “Super Intelligence” (SI) adını verdiği yapay zekâ yeteneklerini 15 görev alanında sahaya sürmek için kurumsal bir plan hazırladı; her alandan bir general veya üst düzey sivil yönetici sorumlu olacak. Plan kontrollü gizli bilgi (CUI) statüsünde ve yayımlanmadı. Üç ayda bir yapılacak tanıtımların bir sonraki 2027 başında AFRL'nin katılımıyla düzenlenecek.",
+  "src": [
+   [
+    "Defense Tech Intelligence Brief (13 Kasım)",
+    "https://edsnews.substack.com/p/defense-tech-intelligence-brief-november-118"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "Gündem",
+  "date": "13 Kasım",
+  "title": "Anthropic Claude Fable 5.2 ve Mythos 5.2'nin fiyat ve performans ayrıntıları açıklandı; OpenAI GPT-6 Cyber'ı sınırlı erişime açtı",
+  "text": "Claude Fable 5.2 ve Mythos 5.2, önceki sürüme göre %30 daha hızlı; fiyat milyon giriş token'ı için 8, çıkış için 40 dolar. Fable 5.2, FrontierCode 2.0'da %49,1 skor aldı ve meşru talepleri önceki sürüme göre yaklaşık %55 daha az engelliyor. OpenAI'ın GPT-6 Cyber modeli ExploitGym'de %48,5 skor aldı (GPT-5.6 Cyber %32,1); model yalnızca Daybreak Red kapsamındaki onaylı müşterilere açık ve kritik altyapı savunucuları için 1 milyar dolarlık hibe programı açıklandı.",
+  "src": [
+   [
+    "Trew Knowledge",
+    "https://trewknowledge.com/2026/11/13/ai-this-week-smarter-models-deeper-access-higher-stakes/"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "Vaka çalışmaları",
+  "date": "12 Kasım",
+  "title": "Ads Uploader: Ekim'de Meta reklamlarının yaklaşık üçte biri YZ ajanlarınca yayına alındı",
+  "text": "Ads Uploader'ın verilerine göre Ekim 2026'da şirketin Meta Ads MCP'sini kullanan YZ ajanları 108.808 reklam yayına aldı; bu, platformdaki tüm yayınların yaklaşık 10'da 3'ü. Şirket, ajanların reklam yayınlama ve düzenleme yetkisini hesap bazında Kapalı, Onaylı veya Serbest olarak ayarlayan bir onay kuyruğu (Agent Inbox) devreye aldı.",
+  "src": [
+   [
+    "GlobeNewswire – Ads Uploader",
+    "https://www.globenewswire.com/news-release/2026/11/12/3402004/0/en/agent-inbox-for-meta-ads-the-ads-uploader-mcp-can-now-analyze-edit-and-launch-with-approval-wherever-you-want-it.html"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "Vaka çalışmaları",
+  "date": "13 Kasım",
+  "title": "Iterable: YZ destekli SDK rehberliği kurulumdan ilk doğrulanmış mesaja süreyi bir günden bir saatin altına indirdi",
+  "text": "Iterable, kış ürün lansmanında iOS, Android ve React Native için YZ destekli SDK rehberliğiyle bir geliştiricinin kurulumdan ilk doğrulanmış mesaja ulaşma süresinin yaklaşık bir günden bir saatin altına indiğini açıkladı. Şirket aynı lansmanda Claude, ChatGPT ve Cursor için barındırılan bir MCP sunucusu ve sekiz yeni entegrasyon duyurdu.",
+  "src": [
+   [
+    "MarTech Cube – Iterable",
+    "https://www.martechcube.com/iterable-launches-hosted-mcp-server-for-claude-chatgpt-and-cursor/"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "MCP sunucuları",
+  "date": "12–13 Kasım",
+  "title": "Yeni MCP sunucuları: lojistik, reklam yönetimi, satış etkinleştirme ve pazarlama otomasyonu",
+  "text": "Son günlerde dört şirket, YZ asistanlarının kendi platformlarına MCP üzerinden erişmesini sağlayan sunucular duyurdu. Freight Right lojistik fiyatlandırma ve takibi ChatGPT'ye taşıdı; Ads Uploader ajanlar için onay kuyruğu ekledi; SalesHood ve Iterable kurumsal oturum açma ile çalışan MCP sunucularını tüm planlarına açtı.",
+  "detay": [
+   "Freight Right — okyanus FCL/LCL, hava kargo ve ABD/Kanada LTL fiyat sorgulama, rezervasyon hazırlama ve sevkiyat takibi; ChatGPT eklentisi, API anahtarı gerekmiyor (12 Kasım)",
+   "Ads Uploader — Meta Ads MCP'si için Agent Inbox; reklam açma ve düzenlemede hesap bazında Kapalı/Onaylı/Serbest yetki; Claude, ChatGPT, Cursor ve Claude Code ile çalışıyor (12 Kasım)",
+   "SalesHood — onaylı içerikten yanıt, alıcıya uygun materyal arama ve dijital satış odalarına paylaşım; Claude, ChatGPT, Gemini, Copilot, Glean ve Perplexity ile uyumlu (12 Kasım)",
+   "Iterable — Claude, ChatGPT ve Cursor için barındırılan MCP sunucusu; kurumsal SSO ile kullanıcı bazlı oturum, istekler Nova Agent üzerinden (13 Kasım)"
+  ],
+  "src": [
+   [
+    "GlobeNewswire – Freight Right",
+    "https://globenewswire.com/news-release/2026/11/12/3401801/0/en/freight-right-launches-freight-right-mcp-for-chatgpt.html"
+   ],
+   [
+    "GlobeNewswire – Ads Uploader",
+    "https://www.globenewswire.com/news-release/2026/11/12/3402004/0/en/agent-inbox-for-meta-ads-the-ads-uploader-mcp-can-now-analyze-edit-and-launch-with-approval-wherever-you-want-it.html"
+   ],
+   [
+    "GlobeNewswire – SalesHood",
+    "https://globenewswire.com/news-release/2026/11/12/3402294/0/en/saleshood-mcp-brings-trusted-revenue-enablement-into-the-ai-tools-sales-teams-already-use.html"
+   ],
+   [
+    "MarTech Cube – Iterable",
+    "https://www.martechcube.com/iterable-launches-hosted-mcp-server-for-claude-chatgpt-and-cursor/"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "GitHub'da öne çıkanlar",
+  "date": "14 Kasım",
+  "title": "Kasım'da açılan depolar arasında ajan becerileri, ajan döngüleri ve yerel YZ araçları öne çıkıyor",
+  "text": "GitHub arama API'sine göre 1 Kasım'dan sonra oluşturulan depolar arasında en çok yıldız alanlar ağırlıkla YZ ajanlarına yönelik beceri paketleri, arka planda çalışan ajan döngüleri ve ajanların uygulama, 3B sahne ve telefon kontrolü yapmasını sağlayan araçlar. Yıldız sayıları depoların açıldığı günden 14 Kasım'a kadar toplanan toplam yıldızı gösteriyor.",
+  "detay": [
+   "janestreet/agent_skills — ajan becerileri (+8.335)",
+   "KKKKhazix/agent-autoloop — komut satırı ajanının arka planda iş alıp takip etmesini sağlayan döngü (+5.169)",
+   "expo/exact — web, macOS, iOS ve Linux'ta yerel çalışan, YZ ajanının derleyip test edebildiği uygulama çatısı (+4.045)",
+   "shanselman/gputaskman — süreç bazında VRAM ve LLM KV önbellek bilgisi veren GPU görev yöneticisi (+3.103)",
+   "caru-ini/stack-diagram — tek cümlelik tanımdan mimari diyagram üreten ajan becerisi (+2.485)",
+   "sarpstar/cinecode — YZ kodlama ajanıyla kod tabanlı video üretimi (+2.430)",
+   "DIYgod/pinky — MCP ajanlarının iPhone ve Android telefonları kullanıcı onayıyla kullanması (+2.090)",
+   "Sandflow-ai/sand3d — LLM'ler için Python'da 3B modelleme (+1.965)",
+   "voyager-so/vork — ajanlar için başsız 3B ve VFX motoru (+1.524)",
+   "agentes-chat/agentes-chat — ekip ve YZ ajanlarının birlikte çalıştığı, MCP araçlı, kendi sunucunda barındırılan sohbet platformu (+1.354)"
+  ],
+  "src": [
+   [
+    "GitHub arama API",
+    "https://api.github.com/search/repositories?q=created:%3E2026-10-31+stars:%3E300&sort=stars&order=desc"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "Siber güvenlik",
+  "date": "10 Kasım",
+  "title": "CISA, aktif istismar edilen altı açığı KEV kataloğuna ekledi; Barracuda'daki açık CVSS 9,3",
+  "text": "CISA 10 Kasım'da Barracuda, Google Chrome, Cisco, Microsoft Outlook ve Openwave ürünlerindeki altı açığı aktif istismar edilen açıklar kataloğuna ekledi. En kritik olanı Barracuda Email Security Gateway'deki kimlik doğrulama atlatma açığı (CVE-2026-116606, CVSS 9,3; 9.4.0.030'da düzeltildi). Federal kurumlar için son tarih Barracuda açıklarında 13 Kasım, diğerlerinde 24 Kasım.",
+  "detay": [
+   "CVE-2026-111560 (CVSS 8,6) — Barracuda cihazlarında saat dilimi alanı üzerinden komut enjeksiyonu",
+   "CVE-2026-125350 (CVSS 8,8) — Chrome XML bileşeninde use-after-free; 157.0.8103.50'de düzeltildi",
+   "CVE-2026-20320 (CVSS 7,5) — Cisco BroadWorks OCI'de XXE",
+   "CVE-2026-111793 (CVSS 4,3) — Openwave Webtop Media Transcoder dosya türü atlatma"
+  ],
+  "src": [
+   [
+    "SecurityOnline",
+    "https://securityonline.info/cisa-kev-six-vulnerabilities-november-2026/"
+   ]
+  ]
+ },
+ {
+  "cat": "Yapay Zekâ",
+  "sub": "Siber güvenlik",
+  "date": "10 Kasım",
+  "title": "Outlook'ta istismar edilen sıfırıncı gün açığı NTLMv2 özetlerini sızdırıyor; Kasım yamasıyla kapatıldı",
+  "text": "Microsoft, 10 Kasım Patch Tuesday'de Outlook'taki CVE-2026-124194 (CVSS 6,5) sahtecilik açığını kapattı. Hazırlanmış bir mesaj dosyası, harici içerik uyarısı göstermeden Outlook'un saldırgan sunucusuna bağlanmasına ve kurbanın NTLMv2 özetinin sızmasına yol açabiliyor. Düzeltilmiş sürümler Office LTSC 2021 için 16.0.14334.21048, LTSC 2024 için 16.0.17932.21140; Microsoft açığın bulunmasında Anthropic'in Claude modeliyle çalışan araştırmacı Benoit Sevens'i andı.",
+  "src": [
+   [
+    "SecurityOnline",
+    "https://securityonline.info/outlook-zero-day-cve-2026-124194/"
+   ]
+  ]
+ }
+]
+</script>
+<script>
+(function(){
+  function J(id){ return JSON.parse(document.getElementById(id).textContent); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  var viz=J('viz'), desc=J('cats'), data=J('news');
+
+  /* Tema: otomatik → açık → koyu */
+  var themeBtn=document.getElementById('theme'), root=document.documentElement;
+  var icons={
+    auto:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>',
+    light:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+    dark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'
+  };
+  var names={auto:'Otomatik',light:'Beyaz',dark:'Siyah'};
+  function theme(){ return root.getAttribute('data-theme')||'auto'; }
+  function paintTheme(){ var t=theme(); themeBtn.innerHTML=icons[t]+'<span class="t">'+names[t]+'</span>'; themeBtn.title='Tema: '+names[t]; }
+  themeBtn.addEventListener('click',function(){
+    var next={auto:'light',light:'dark',dark:'auto'}[theme()];
+    if(next==='auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme',next);
+    try{ next==='auto'?localStorage.removeItem('bulten-tema'):localStorage.setItem('bulten-tema',next); }catch(e){}
+    paintTheme();
+  });
+  paintTheme();
+
+  /* Paylaş */
+  var toast=document.getElementById('toast');
+  function show(t){ toast.textContent=t; toast.hidden=false; setTimeout(function(){toast.hidden=true;},2200); }
+  document.getElementById('share').addEventListener('click',function(){
+    var url=location.href.split('#')[0].replace(/arsiv\/[^/]*$/,'');
+    var d={title:document.title,text:'Kritik Teknoloji Bülteni — İHA ve savunma teknolojilerinde günlük özet',url:url};
+    if(navigator.share){ navigator.share(d).catch(function(){}); return; }
+    if(navigator.clipboard){ navigator.clipboard.writeText(url).then(function(){show('Bağlantı kopyalandı');},function(){show(url);}); } else show(url);
+  });
+
+  /* Göstergeler */
+  document.getElementById('kpis').innerHTML=viz.kpis.map(function(k){
+    return '<div class="kpi"><b>'+esc(k.value)+'</b><span>'+esc(k.label)+'</span></div>';
+  }).join('');
+
+  /* Takvim */
+  var today=new Date(viz.issueDate+'T12:00:00');
+  var mon=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+  document.getElementById('timeline').innerHTML=viz.timeline.map(function(t){
+    var d=new Date(t.date+'T12:00:00'), days=Math.round((d-today)/864e5);
+    var when=days>1?days+' gün sonra':days===1?'yarın':days===0?'bugün':'geçti';
+    return '<div class="tl-item'+(days<0?' past':'')+'"><b>'+esc(t.label||(d.getDate()+' '+mon[d.getMonth()]))+'</b><span>'+esc(t.text)+'</span><small>'+when+'</small></div>';
+  }).join('');
+
+  /* Grafikler */
+  document.getElementById('charts').innerHTML=viz.charts.map(function(c){
+    var max=Math.max.apply(null,c.bars.map(function(b){return b.value;}));
+    return '<figure class="chart" style="margin:0"><h3>'+esc(c.title)+'</h3><div class="bars">'+
+      c.bars.map(function(b){
+        return '<div class="bar'+(b.hl?' hl':'')+'"><div class="bar-top"><span>'+esc(b.label)+'</span><b>'+esc(b.display)+'</b></div>'+
+          '<div class="bar-track"><div class="bar-fill" style="width:'+(b.value/max*100).toFixed(1)+'%"></div></div></div>';
+      }).join('')+'</div>'+(c.note?'<figcaption class="chart-note">'+esc(c.note)+'</figcaption>':'')+'</figure>';
+  }).join('');
+
+  /* Yol haritası */
+  var r=viz.roadmap, span=r.end-r.start;
+  function pos(y){ return ((y-r.start)/span*100).toFixed(2)+'%'; }
+  document.getElementById('road-lede').textContent=r.lede||'';
+  var g='<div></div><div class="road-axis">';
+  for(var y=r.start;y<=r.end;y++) g+='<span style="left:'+pos(y)+'">'+y+'</span>';
+  g+='</div>';
+  var nowY=today.getFullYear()+(today.getMonth()+today.getDate()/31)/12;
+  r.rows.forEach(function(row){
+    var ys=row.events.map(function(e){return e.year;}), a=Math.min.apply(null,ys), b=Math.max.apply(null,ys);
+    g+='<div class="road-label">'+esc(row.label)+'</div><div class="road-line">'+
+      '<div class="road-span" style="left:'+pos(a)+';width:'+((b-a)/span*100).toFixed(2)+'%"></div>'+
+      '<div class="road-now" style="left:'+pos(nowY)+'"></div>'+
+      row.events.map(function(e){ return '<div class="road-ev'+(row.tr?' tr':'')+'" style="left:'+pos(e.year)+'"><i></i><em>'+esc(e.text)+'</em></div>'; }).join('')+
+      '</div>';
+  });
+  document.getElementById('road').innerHTML=g;
+
+  /* Haberler */
+  var ico={
+    'Savunma Pazarı':'<path d="M2 12l9-2 3-7 2 1-1 7 7 2v2l-7 1-1 6-2 1-3-6-7-1z"/>',
+    'Ülkeler':'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+    'İhracat & Düzenleme':'<path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/>',
+    'Teknoloji':'<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
+    'Tedarik & Hammadde':'<path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/>',
+    'Yatırım':'<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
+    'Rakipler & Pazar':'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    'Türkiye':'<path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/>',
+    'İhracat & İhaleler':'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+    'Yeni Teknolojiler':'<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
+    'Tedarik Zinciri':'<path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/>',
+    'Enerji & Sağlık':'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+    'Yapay Zekâ':'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>'
+  };
+  var cats=['Tümü']; data.forEach(function(n){ if(cats.indexOf(n.cat)<0) cats.push(n.cat); });
+  var filters=document.getElementById('filters'), list=document.getElementById('list'), current='Tümü';
+  try{ var s=localStorage.getItem('bulten-filtre'); if(s&&cats.indexOf(s)>-1) current=s; }catch(e){}
+  function render(){
+    filters.innerHTML=cats.map(function(c){
+      var n=c==='Tümü'?data.length:data.filter(function(x){return x.cat===c;}).length;
+      return '<button type="button" aria-pressed="'+(c===current)+'" data-c="'+esc(c)+'">'+esc(c)+' <small>'+n+'</small></button>';
+    }).join('');
+    var html='', PER=3;
+    function card(n){
+      return '<article class="item"><div class="meta">'+(n.tr?'<span class="pill tr">Türkiye</span>':'<span class="pill">Dünya</span>')+'<span>'+esc(n.date)+'</span></div>'+
+        '<h3>'+esc(n.title)+'</h3><p>'+esc(n.text)+'</p>'+
+        (n.detay?'<details><summary>Ayrıntılar</summary><ul>'+n.detay.map(function(d){return '<li>'+esc(d)+'</li>';}).join('')+'</ul></details>':'')+
+        '<p class="src">Kaynak: '+n.src.map(function(s){return '<a href="'+esc(s[1])+'" target="_blank" rel="noopener">'+esc(s[0])+'</a>';}).join(' · ')+'</p></article>';
+    }
+    cats.slice(1).forEach(function(c){
+      if(current!=='Tümü'&&c!==current) return;
+      var items=data.filter(function(n){return n.cat===c;});
+      var subs=[]; items.forEach(function(n){ if(n.sub&&subs.indexOf(n.sub)<0) subs.push(n.sub); });
+      html+='<div class="cat-head"><span class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ico[c]||'<circle cx="12" cy="12" r="8"/>')+'</svg></span><h3 class="cat-title">'+esc(c)+'</h3></div>'+
+        (desc[c]?'<p class="cat-desc">'+esc(desc[c])+'</p>':'');
+      if(current==='Tümü'){
+        if(subs.length>1) html+='<p class="sub-list">'+subs.map(esc).join(' · ')+'</p>';
+        items.slice(0,PER).forEach(function(n){ html+=card(n); });
+        if(items.length>PER) html+='<button type="button" class="more" data-go="'+esc(c)+'">'+esc(c)+' bölümünün tümü ('+items.length+' haber) →</button>';
+      } else {
+        var lastSub=null;
+        items.forEach(function(n){
+          if(n.sub&&n.sub!==lastSub){ html+='<h4 class="sub-title">'+esc(n.sub)+'</h4>'; lastSub=n.sub; }
+          html+=card(n);
+        });
+      }
+    });
+    list.innerHTML=html;
+  }
+  function go(c){ current=c; try{ localStorage.setItem('bulten-filtre',current); }catch(e){} render(); document.getElementById('news-h').scrollIntoView({block:'start'}); }
+  list.addEventListener('click',function(e){ var b=e.target.closest('.more'); if(b) go(b.getAttribute('data-go')); });
+  filters.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    current=b.getAttribute('data-c');
+    try{ localStorage.setItem('bulten-filtre',current); }catch(e){}
+    render();
+  });
+  render();
+
+  /* Kaynakça: haber ve grafik kaynaklarının tekil listesi */
+  var refs=[], seen={};
+  function addRef(name,url,ctx){ if(seen[url]){ if(seen[url].ctx.indexOf(ctx)<0) seen[url].ctx.push(ctx); return; } var r={name:name,url:url,ctx:[ctx]}; seen[url]=r; refs.push(r); }
+  data.forEach(function(n){ n.src.forEach(function(s){ addRef(s[0],s[1],n.title); }); });
+  viz.charts.forEach(function(c){ (c.src||[]).forEach(function(s){ addRef(s[0],s[1],'Grafik: '+c.title); }); });
+  function host(u){ try{ return new URL(u).hostname.replace(/^www\./,''); }catch(e){ return ''; } }
+  document.getElementById('ref-lede').textContent='Bu sayıda kullanılan '+refs.length+' kaynak · Erişim: '+viz.issueLabel+' · Açmak için dokunun';
+  var refBox=document.getElementById('ref-box');
+  function openRefs(){ if(location.hash==='#kaynakca') refBox.open=true; }
+  window.addEventListener('hashchange',openRefs); openRefs();
+  document.querySelectorAll('a[href="#kaynakca"]').forEach(function(a){ a.addEventListener('click',function(){ refBox.open=true; }); });
+  document.getElementById('refs').innerHTML=refs.map(function(r){
+    return '<li><a href="'+esc(r.url)+'" target="_blank" rel="noopener">'+esc(r.name)+'</a> · '+esc(host(r.url))+'<span>'+esc(r.ctx.join(' · '))+'</span></li>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
